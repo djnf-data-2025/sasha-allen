@@ -43,15 +43,15 @@ library(rvest)
 
 ```{r}
 
-# 
-# YOUR_DATA <- read.csv("../data/XXXXX.csv") |> 
-#     clean_names()
-
-#https://data.ct.gov/Education/Next-Generation-Accountability-System/h28j-iix5/about_data
-next_gen <- read.csv("../data/Next_Generation_Accountability_System_20250422.csv") |> 
+next_gen <- read.csv("../data/next_gen.csv") |> 
     clean_names()
 
+zips_ct <- read.csv("../data/zips_ct.csv")|>
+  clean_names()
 
+zips_ct <- zips_ct |> rename(
+  reporting_district_code = organization_code,
+)
 ```
 
 
@@ -62,25 +62,6 @@ next_gen <- read.csv("../data/Next_Generation_Accountability_System_20250422.csv
 
 glimpse(next_gen)
 
-```
-
-# Data exploration
-
-```{r}
-next_gen <- read.csv("data/next_gen.csv") |> 
-    clean_names()
-
-zips_ct <- read.csv("data/zips_ct.csv")|>
-  clean_names()
-
-zips_ct <- zips_ct |> rename(
-  reporting_district_code = organization_code,
-)
-```
-
-# Explore the data types
-```{r}
-glimpse(next_gen)
 ```
 
 # Data exploration
@@ -102,15 +83,9 @@ zip_pct_peryear <- zip_percentage |>
 
 ```{r}
 #counties with the highest rates of disconnected youth
-zip_pct_peryear <- zip_percentage |>
-  summarise(yearly_pct_avg = sum()
-  )
-
-
 
 
 # Questions 
 
-Write down questions you want answered:
 
 
