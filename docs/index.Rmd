@@ -4,24 +4,24 @@ output: html_document
 date: "2025-04-22"
 ---
 
-One in three students are at risk of not graduating high school in Connecticut which is  a result of the disconnected youth crisis where students are dropping out of school or barely passing with no career or college opportunities in early adulthood. I have identified the areas that have been impacted the hardest and am comparing them to the median household income and the per-pupil state, local and federal education funding in each district to the accountability index, which is the percentage of total possible points earned by each district and school. So far, I have found there is some relationship between low per-pupil funding and low accountability index rates but will continue to look into this. 
+One in three students are at risk of not graduating high school in Connecticut as of 2022 which is  a result of the disconnected youth crisis where students are dropping out of school or barely passing with no career or college opportunities in early adulthood. I have identified the areas that have been impacted the hardest and am comparing them to the median household income and the per-pupil state, local and federal education funding in each district to the accountability index, which is the percentage of total possible points earned by each district and school. So far, I have found there is some relationship between low per-pupil funding and low accountability index rates but will continue to look into both of these areas 
 
-This story is extremely timely because this issue has been brought to light in the past year, and there was legislation that was introduced this session to increase funding for at-risk students. The target audience for this story is anyone in Connecticut who is in the school system or knows anyone involved in the school system. This way, they can be more informed on what the state is trying to  do as well as the contributing factors to the crisis. 
+This story is extremely timely because this issue has been brought to light in the past year, and there was legislation introduced this session to increase funding for at-risk students. The target audience for this story is anyone in Connecticut who is in the school system or knows anyone involved in the school system. This way, they can be more informed on what the state is trying to  do as well as the contributing factors to the crisis. 
 
 People to interview are: 
 Rep. Anthony L. Nolan, he introduced a bill to increase education funding.
-Donna Hamzy, helped craft the Young People's Plan, which is a ten year plan for funding to help the crisis
-Someone from the bill testimony could be a good place to start with people closely connected to the issue, preferrably a student who has experienced disconnection in the school system. (https://www.cga.ct.gov/aspx/CGADisplayTestimonies/CGADisplayTestimony.aspx?bill=SB-01511&doc_year=2025)
+Donna Hamzy, helped craft the Young People's Plan, which is a ten year plan for funding to help the crisis.
+Someone from the bill testimony could be a good place to start with people closely connected to the issue, preferably a student who has experienced disconnection in the school system. (https://www.cga.ct.gov/aspx/CGADisplayTestimonies/CGADisplayTestimony.aspx?bill=SB-01511&doc_year=2025)
 
-This could possibly impact the funding for education, although it seems like there is already some initiative to change policy. Hopefully from this more nonprofits will be able to help supplement in high need areas from this as well. 
+This could possibly impact the funding for education, although it seems like there is already some initiative to change policy. Hopefully from this more nonprofits will be able to help supplement in high need areas from this as well. This topic has been covered, but not in the way I am hoping to explore the issue. Much of the legislation has been reported on, but I want to focus more on the issues that the areas with the most youth in crisis are facing that can contribute to the level of crisis in these areas. 
 
 I was mainly interested in this story because I had never heard of the disconnected youth crisis before and for a rich state known for having a fairly good education system, one in three students should not be dropping out. I think it will be interesting to see if there are other underlying issues, and if I am able I also want to look into the incarceration rates of young people to see if they match up to areas experiencing high rates of disconnected youth. However, this data was not readily available so I need to get this before I can look into it.
 
 Photo and graphics: Map of the issue zipcodes or districts, double bar graph of the top issue districts or zipcodes and the per-pupil funding in each area, same thing with the census data on median household income. Photos of students who are featured in the interview?
 
-I need to gather more data then I have right now. I need census data on median household income, the incarceration data and I need to keep up with the ongoing legislation and spending. I also want to see if there are any nonprofits dedicated to supporting the crisis and where these organizations are located. 
+I need to gather more data then I have right now. I need census data on median household income, the incarceration data and I need to keep up with the ongoing legislation and spending. I also want to see if there are any nonprofits making a major impact in any of these areas on students. It is possible there are a lot, it was mentioned in the legislation. 
 
-Estimated delivery is 
+Estimated delivery is beginning of July.
 
 ```{r}
 library(tidyverse)
@@ -71,6 +71,24 @@ per_pupil_all <- bind_rows(pp_17_18, pp_18_19, pp_19_20, pp_20_21, pp_21_22)
 per_pupil_all <- per_pupil_all|> rename(
   reporting_district_code = district_code,
 )
+
+#graduation rate
+
+graduation_rate_state<- read.csv("../data/state_graduation.csv")|>
+  clean_names()
+  
+graduation_rate <- read.csv("../data/graduation_rates1.csv")|>
+  clean_names()
+
+
+#dropout rate by district
+dropout_rate <- read.csv("../data/dropout_rates1.csv")|>
+  clean_names()
+
+#percent of students in high school past four years
+still_enrolled <- read.csv("../data/over_four_year_enrollment.csv")|>
+  clean_names()
+
 ```
 
 
@@ -84,8 +102,7 @@ glimpse(next_gen)
 #filter out percent
 next_gen_pct <- next_gen |>
   filter(category == "DistrictTot")|>
-  select(rptng_district_name, reporting_district_code, total_points, total_possible_points, fall_of_year, accountability_index,) 
-
+  select(rptng_district_name, reporting_district_code, total_points, total_possible_points, fall_of_year, accountability_index) 
 
 #join dataset w/ zips to the disconnected dataset (could use this for viz purposes)
 zips_ct_selected <- zips_ct |> select(zipcode, reporting_district_code)
@@ -94,10 +111,27 @@ zip_percentage <- left_join(next_gen_pct, zips_ct_selected, by = "reporting_dist
 #zip for 2021-2022 per pupil funding 
 pp_21_22 <- left_join(pp_21_22, zips_ct_selected, by = c("district_code" = "reporting_district_code"))
 
+#dropout, graduation, and still in school data 
+dropout_rate <- dropout_rate |> rename(
+  reporting_district_code = district_code,
+)
+
+still_enrolled <- still_enrolled|> rename(
+  reporting_district_code = district_code,
+)
+
+graduation_rate <- graduation_rate |> rename(
+  reporting_district_code = district_code,
+)
+
+dropout_rate <- left_join(dropout_rate, zips_ct_selected, by = "reporting_district_code")
+
+graduation_rate <- left_join(graduation_rate, zips_ct_selected, by = "reporting_district_code")
+
+still_enrolled <- left_join(still_enrolled, zips_ct_selected, by = "reporting_district_code")
 
 #add zips to the per-pupil funding dataset
 per_pupil_all <- left_join(per_pupil_all, zips_ct_selected, by = "reporting_district_code")
-
 
 #counties with the highest rates of disconnected youth
 zip_pct_peryear <- zip_percentage |>
@@ -111,14 +145,22 @@ zip_pct_peryear <- zip_percentage |>
 #im not sure what's going on with 06105 
 pp_21_22 |>
   arrange(total) |>
-  select(total, zipcode)
+  select(total, zipcode, district)
 ```
 ```{r}
-zip_percentage |>
-  group_by(fall_of_year = "2021")|>
-  arrange(desc(accountability_index))|
-  select
+#finding districts and zipcodes with the highest dropout rates
+dropout_rate |>
+  arrange(desc(x2021_22)) |>
+  select(x2021_22, zipcode, district)
 ```
 
 
+```{r}
+graduation_rate |>
+  arrange(x2021_22) |>
+  select(x2021_22, zipcode, district)
+```
+```{r}
+
+```
 
