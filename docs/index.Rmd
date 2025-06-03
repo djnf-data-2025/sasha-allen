@@ -4,24 +4,36 @@ output: html_document
 date: "2025-04-22"
 ---
 
-One in three students are at risk of not graduating high school in Connecticut which is  a result of the disconnected youth crisis where students are dropping out of school or barely passing with no career or college opportunities in early adulthood. I have identified the areas that have been impacted the hardest and am comparing them to the median household income and the per-pupil state, local and federal education funding in each district to the accountability index, which is the percentage of total possible points earned by each district and school. So far, I have found there is some relationship between low per-pupil funding and low accountability index rates but will continue to look into this. 
+Hi Sasha - Good to see an advance in the research and more details about the project. Good to see the narrative integrated with the code on the .rmd document.
 
-This story is extremely timely because this issue has been brought to light in the past year, and there was legislation that was introduced this session to increase funding for at-risk students. The target audience for this story is anyone in Connecticut who is in the school system or knows anyone involved in the school system. This way, they can be more informed on what the state is trying to  do as well as the contributing factors to the crisis. 
+So, you're still struggling to get a handle on this. Let's look at the main finding: one in three kids are dropping out or "are at risk" of dropping out. What does that mean? Are they dropping out or not?
 
-People to interview are: 
-Rep. Anthony L. Nolan, he introduced a bill to increase education funding.
-Donna Hamzy, helped craft the Young People's Plan, which is a ten year plan for funding to help the crisis
-Someone from the bill testimony could be a good place to start with people closely connected to the issue, preferrably a student who has experienced disconnection in the school system. (https://www.cga.ct.gov/aspx/CGADisplayTestimonies/CGADisplayTestimony.aspx?bill=SB-01511&doc_year=2025)
+I would try to get the basic dropout rate first.
 
-This could possibly impact the funding for education, although it seems like there is already some initiative to change policy. Hopefully from this more nonprofits will be able to help supplement in high need areas from this as well. 
+1) How does that compare to the national average?
+2) What is the trend in the dropout rate?
+3) What are the factors driving the dropout rate?
+4) Can we get dropout rates by school district?
 
-I was mainly interested in this story because I had never heard of the disconnected youth crisis before and for a rich state known for having a fairly good education system, one in three students should not be dropping out. I think it will be interesting to see if there are other underlying issues, and if I am able I also want to look into the incarceration rates of young people to see if they match up to areas experiencing high rates of disconnected youth. However, this data was not readily available so I need to get this before I can look into it.
+I think getting some enrollment data for the school districts would help. Then you can calculate the funds per student and the dropout rate and see if more money is working or not.
+
+I hope this is helpful! See my comments on your .RMD document. 
+
+**\*\*rsw comment: let's tighten up this opening sentence. it's a mouthful** . **Below you say one in three students are dropping out. that caught my eye**\*\* One in three students are at risk of not graduating high school in Connecticut which is a result of the disconnected youth crisis where students are dropping out of school or barely passing with no career or college opportunities in early adulthood. I have identified the areas that **rsw comment: better, more active phrase?** [have been impacted the hardest]{.underline} and am comparing them to the median household income and the per-pupil state, local and federal education funding in each district to [the accountability index,]{.underline} **rsw comment: you'll want to explain this in more specific terms** which is the percentage of total possible points earned by each district and school. So far, I have found there is some relationship between low per-pupil funding and low accountability index rates but will continue to look into this.
+
+This story is extremely timely because [this issue has been brought to light in the past year]{.underline} **rsw comment: how?**, and there was legislation that was introduced this [session]{.underline} **of the Connecticut House? Senate?** to increase funding for at-risk students. The target audience for this story is anyone in Connecticut who is in the school system or knows anyone involved in the school system **rsw comments: parents, students, teachers, family members and friends of students**. This way, they can be more informed on what the state is trying to do as well as the contributing factors to the crisis.
+
+People to interview are: Rep. Anthony L. Nolan, he introduced a bill to increase education funding. Donna Hamzy, helped craft the Young People's Plan, which is a ten year plan for funding to help the crisis. ~~Someone from the bill testimony~~ **RSW COMMENT: A person who testified during the legislative hearings** could be a good place to start with people closely connected to the issue, preferrably a student who has experienced disconnection in the school system. (<https://www.cga.ct.gov/aspx/CGADisplayTestimonies/CGADisplayTestimony.aspx?bill=SB-01511&doc_year=2025>)
+
+This could possibly impact the funding for education, although it seems like there is already some initiative to change policy. Hopefully from this more nonprofits will be able to help supplement in high need areas from this as well.
+
+I was mainly interested in this story because I had never heard of the disconnected youth crisis before and for a rich state known for having a fairly good education system, **rsw comment: great. how many thousands of young people would this represent?** **one in three students should not be dropping out.** I think it will be interesting to see if there are other underlying issues, and if I am able I also want to look into the incarceration rates of young people to see if they match up to areas experiencing high rates of disconnected youth. However, this data was not readily available so I need to get this before I can look into it.
 
 Photo and graphics: Map of the issue zipcodes or districts, double bar graph of the top issue districts or zipcodes and the per-pupil funding in each area, same thing with the census data on median household income. Photos of students who are featured in the interview?
 
-I need to gather more data then I have right now. I need census data on median household income, the incarceration data and I need to keep up with the ongoing legislation and spending. I also want to see if there are any nonprofits dedicated to supporting the crisis and where these organizations are located. 
+I need to gather more data then I have right now. I need census data on median household income, the incarceration data and I need to keep up with the ongoing legislation **rsw comment: definitely try to get the legislative hearing record which might have more details and data** and spending. I also want to see if there are any nonprofits dedicated to supporting the crisis and where these organizations are located.
 
-Estimated delivery is 
+Estimated delivery is
 
 ```{r}
 library(tidyverse)
@@ -30,7 +42,6 @@ library(readxl)
 library(rvest)
 library(tidycensus)
 ```
-
 
 ```{r}
 #disconnected youth data
@@ -73,12 +84,10 @@ per_pupil_all <- per_pupil_all|> rename(
 )
 ```
 
-
 ```{r}
 glimpse(next_gen)
 
 ```
-
 
 ```{r}
 #filter out percent
@@ -105,6 +114,7 @@ zip_pct_peryear <- zip_percentage |>
   )
 ```
 
+# rsw comment: good stuff. now let's get enrollment per district and get a funds per student statistic so we can compare. dept of education or connecticut school board would have enrollment data.,
 ```{r}
 #comparing most recent data from next gen to per pupil funding to figure out which zips get the least
 
@@ -113,12 +123,10 @@ pp_21_22 |>
   arrange(total) |>
   select(total, zipcode)
 ```
+#rsw comment: zip_percentage was not created so this code fails
 ```{r}
 zip_percentage |>
   group_by(fall_of_year = "2021")|>
   arrange(desc(accountability_index))|
   select
 ```
-
-
-
