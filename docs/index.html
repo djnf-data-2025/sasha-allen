@@ -12,7 +12,7 @@
 
 <meta name="date" content="2025-04-22" />
 
-<title>Demo_Sasha</title>
+<title>Sasha Allen Disconnected Youth</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -349,39 +349,20 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Demo_Sasha</h1>
+<h1 class="title toc-ignore">Sasha Allen Disconnected Youth</h1>
 <h4 class="date">2025-04-22</h4>
 
 </div>
 
 
-<p>A demo notebook for Dow Jones News Fund data interns</p>
-<p>During the week’s training, you will work on a project called
-Investigate Your Community to produce detailed story pitches relevant to
-their summer internship positions. The goal is to have the students
-research a topic relevant to your newsroom so they can get to work
-immediately at the internship.</p>
-<p>Here are some examples from last year’s DJNF data journalism
-training:</p>
-<p>Hannah Rosenberger, at ASI Media/Counselor magazine, produced this
-analysis on name, image and likeness trends: <a href="https://hrosenberger.github.io/ASI-NIL-Project/" class="uri">https://hrosenberger.github.io/ASI-NIL-Project/</a></p>
-<p>Shifra Dayak, an intern at the Connecticut Mirror, produced this
-analysis of environment spill data: <a href="https://shifradayak.github.io/DJNF_Merrill/ct_env_spills.html" class="uri">https://shifradayak.github.io/DJNF_Merrill/ct_env_spills.html</a>.</p>
-<p>Michael Zhang, an intern at the Houston Landing, explored local
-election data: <a href="https://michaelzhangreporter.github.io/Houston_Campaign_Finance/" class="uri">https://michaelzhangreporter.github.io/Houston_Campaign_Finance/</a></p>
-<p>Here’s what your newsroom suggested for a project I thought it could
-be interesting for her to look at the Disconnected Youth issue, as it’s
-likely to be a topic this session. She could look at the Dalio report
-and perhaps this Next Generation Accountability report from the state
-that shows how well districts are preparing students for next steps.</p>
-<p>This notebook helps you get started</p>
-<div id="load-software-libraries" class="section level1">
-<h1>Load software libraries</h1>
-<pre class="r"><code>#install.packages(&quot;tidyverse&quot;)
-#install.packages(&quot;janitor&quot;)
-#install.packages(&quot;readxl&quot;)
-#install.packages(&quot;rvest&quot;)
-library(tidyverse)</code></pre>
+<p>One in three students are at risk of not graduating high school in
+Connecticut which is a result of the disconnected youth crisis where
+students are dropping out of school or barely passing with no career or
+college opportunities in early adulthood. I have identified the areas
+that have been impacted the hardest and will compare the median
+household income and the per-pupil state, local and federal education
+funding in each district to the</p>
+<pre class="r"><code>library(tidyverse)</code></pre>
 <pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ## ✔ dplyr     1.1.3     ✔ readr     2.1.4
 ## ✔ forcats   1.0.0     ✔ stringr   1.5.0
@@ -407,24 +388,46 @@ library(rvest)</code></pre>
 ## The following object is masked from &#39;package:readr&#39;:
 ## 
 ##     guess_encoding</code></pre>
-</div>
-<div id="load-your-data" class="section level1">
-<h1>Load your data</h1>
-<pre class="r"><code>next_gen &lt;- read.csv(&quot;../data/next_gen.csv&quot;) |&gt; 
+<pre class="r"><code>library(tidycensus)</code></pre>
+<pre class="r"><code>#disconnected youth data
+next_gen &lt;- read.csv(&quot;../data/next_gen.csv&quot;) |&gt; 
     clean_names()
-
+#zip code data (disconnected youth has no zip)
 zips_ct &lt;- read.csv(&quot;../data/zips_ct.csv&quot;)|&gt;
   clean_names()
 
 zips_ct &lt;- zips_ct |&gt; rename(
   reporting_district_code = organization_code,
-)</code></pre>
-</div>
-<div id="explore-the-data-types" class="section level1">
-<h1>Explore the data types</h1>
-<pre class="r"><code>#glimpse(YOUR_DATA)
+)
 
-glimpse(next_gen)</code></pre>
+#per pupil funding data split down to the district, 2017 to 2022  https://public-edsight.ct.gov/overview/per-pupil-expenditures-by-function---district/per-pupil-expenditures-by-funding-source---summary?language=en_US
+
+pp_21_22 &lt;- read.csv(&quot;../data/per_pupil_2122.csv&quot;)|&gt;
+  clean_names() |&gt;
+  mutate(year = &quot;21-22&quot;)
+
+pp_20_21 &lt;- read.csv(&quot;../data/per_pupil_2021.csv&quot;)|&gt;
+  clean_names()|&gt;
+  mutate(year = &quot;20-21&quot;)
+
+pp_19_20 &lt;- read.csv(&quot;../data/per_pupil_1920.csv&quot;)|&gt;
+  clean_names()|&gt;
+  mutate(year = &quot;19-20&quot;)
+
+pp_18_19 &lt;- read.csv(&quot;../data/per_pupil_1819.csv&quot;)|&gt;
+  clean_names()|&gt;
+  mutate(year = &quot;18-19&quot;)
+
+pp_17_18 &lt;- read.csv(&quot;../data/per_pupil_1718.csv&quot;)|&gt;
+  clean_names()|&gt;
+  mutate(year = &quot;17-18&quot;)
+  
+per_pupil_all &lt;- bind_rows(pp_17_18, pp_18_19, pp_19_20, pp_20_21, pp_21_22)
+
+per_pupil_all &lt;- per_pupil_all|&gt; rename(
+  reporting_district_code = district_code,
+)</code></pre>
+<pre class="r"><code>glimpse(next_gen)</code></pre>
 <pre><code>## Rows: 8,589
 ## Columns: 113
 ## $ fall_of_year                 &lt;int&gt; 2014, 2014, 2014, 2014, 2014, 2014, 2014,…
@@ -540,26 +543,230 @@ glimpse(next_gen)</code></pre>
 ## $ ind2lep_oral_rate            &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
 ## $ ind2lep_oral_points          &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
 ## $ ind2lep_oral_possible_points &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</code></pre>
-</div>
-<div id="data-exploration" class="section level1">
-<h1>Data exploration</h1>
-<pre class="r"><code>next_gen_pct &lt;- next_gen |&gt;
+<pre class="r"><code>#filter out percent
+next_gen_pct &lt;- next_gen |&gt;
   filter(category == &quot;DistrictTot&quot;)|&gt;
   select(rptng_district_name, reporting_district_code, total_points, total_possible_points, fall_of_year, accountability_index,) 
+
 
 #join dataset w/ zips to the disconnected dataset (could use this for viz purposes)
 zips_ct_selected &lt;- zips_ct |&gt; select(zipcode, reporting_district_code)
 zip_percentage &lt;- left_join(next_gen_pct, zips_ct_selected, by = &quot;reporting_district_code&quot;)
 
+#zip for 2021-2022 per pupil funding 
+pp_21_22 &lt;- left_join(pp_21_22, zips_ct_selected, by = c(&quot;district_code&quot; = &quot;reporting_district_code&quot;))
+
+
+#add zips to the per-pupil funding dataset
+per_pupil_all &lt;- left_join(per_pupil_all, zips_ct_selected, by = &quot;reporting_district_code&quot;)
+
+
 #counties with the highest rates of disconnected youth
 zip_pct_peryear &lt;- zip_percentage |&gt;
   summarise(yearly_pct_avg = sum()
   )</code></pre>
-<pre class="r"><code>#counties with the highest rates of disconnected youth
+<pre class="r"><code>#comparing most recent data from next gen to per pupil funding to figure out which zips get the least
 
-
-# Questions </code></pre>
-</div>
+#im not sure what&#39;s going on with 06105 
+pp_21_22 |&gt;
+  arrange(total) |&gt;
+  select(total, zipcode)</code></pre>
+<pre><code>##          total    zipcode
+## 1        $0.00      06105
+## 2   $10,597.00      06902
+## 3   $11,861.00      06511
+## 4   $12,865.00      06604
+## 5   $13,524.00      06360
+## 6   $13,616.00      06515
+## 7   $13,635.00      06511
+## 8   $14,334.00      06513
+## 9   $14,614.00      06105
+## 10  $14,652.00      06710
+## 11  $14,729.00      06854
+## 12  $14,901.00      06513
+## 13  $15,094.00      06513
+## 14  $15,492.00      06605
+## 15  $15,514.00      06040
+## 16  $15,651.00      06513
+## 17  $16,031.00      06450
+## 18  $16,037.00      06810
+## 19  $16,322.00      06608
+## 20  $16,464.00      06702
+## 21  $16,517.00      06605
+## 22  $16,529.00      06108
+## 23  $16,556.00      06339
+## 24  $16,601.00      06074
+## 25  $16,654.00      06605
+## 26  $16,721.00      06716
+## 27  $16,740.00      06320
+## 28  $16,776.00      06029
+## 29  $16,850.00      06118
+## 30  $17,251.00      06489
+## 31  $17,353.00      06770
+## 32  $17,446.00      06281
+## 33  $17,662.00      06351
+## 34  $17,679.00      06238
+## 35  $17,703.00      06611
+## 36  $17,707.00      06801
+## 37  $17,745.00      06234
+## 38  $17,815.00      06776
+## 39  $17,825.00      06516
+## 40  $17,828.00      06109
+## 41  $18,050.00      06066
+## 42  $18,125.00      06050
+## 43  $18,133.00      06483
+## 44  $18,144.00      06787
+## 45  $18,210.00      06484
+## 46  $18,223.00      06604
+## 47  $18,246.00      06477
+## 48  $18,259.00      06351
+## 49  $18,281.00      06401
+## 50  $18,302.00      06359
+## 51  $18,334.00      06447
+## 52  $18,348.00      06416
+## 53  $18,516.00      06468
+## 54  $18,517.00      06082
+## 55  $18,540.00      06013
+## 56  $18,632.00      06239
+## 57  $18,663.00      06248
+## 58  $18,666.00      06377
+## 59  $18,674.00 06084-3030
+## 60  $18,738.00      06525
+## 61  $18,740.00      06011
+## 62  $18,780.00      06330
+## 63  $18,870.00      06786
+## 64  $18,872.00      06513
+## 65  $18,929.00      06331
+## 66  $18,940.00      06615
+## 67  $18,980.00      06355
+## 68  $19,021.00      06035
+## 69  $19,065.00      06067
+## 70  $19,090.00      06078
+## 71  $19,098.00      06804
+## 72  $19,163.00      06410
+## 73  $19,200.00      06480
+## 74  $19,292.00      06524
+## 75  $19,322.00      06478
+## 76  $19,386.00      06374
+## 77  $19,398.00      06032
+## 78  $19,402.00      06795
+## 79  $19,404.00      06370
+## 80  $19,407.00      06712
+## 81  $19,417.00      06071
+## 82  $19,418.00      06415
+## 83  $19,472.00      06070
+## 84  $19,508.00 06424-2045
+## 85  $19,514.00      06519
+## 86  $19,518.00      06259
+## 87  $19,543.00      06473
+## 88  $19,569.00      06062
+## 89  $19,608.00      06098
+## 90  $19,729.00      06320
+## 91  $19,764.00      06260
+## 92  $19,782.00      06043
+## 93  $19,802.00      06268
+## 94  $19,951.00      06420
+## 95  $20,067.00      06237
+## 96  $20,081.00 06042-2010
+## 97  $20,108.00      06612
+## 98  $20,120.00      06111
+## 99  $20,144.00      06001
+## 100 $20,203.00      06107
+## 101 $20,246.00      06022
+## 102 $20,268.00      06033
+## 103 $20,323.00      06333
+## 104 $20,611.00      06057
+## 105 $20,657.00      06437
+## 106 $20,673.00      06103
+## 107 $20,717.00      06472
+## 108 $20,793.00      06226
+## 109 $20,803.00      06470
+## 110 $20,891.00      06037
+## 111 $20,977.00      06365
+## 112 $21,018.00      06384
+## 113 $21,161.00      06515
+## 114 $21,195.00      06525
+## 115 $21,309.00      06790
+## 116 $21,440.00      06360
+## 117 $21,454.00      06901
+## 118 $21,473.00      06095
+## 119 $21,504.00      06812
+## 120 $21,567.00      06492
+## 121 $21,597.00      06852
+## 122 $21,683.00      06762
+## 123 $21,691.00      06254
+## 124 $21,863.00      06379
+## 125 $21,901.00      06248
+## 126 $21,903.00      06385
+## 127 $22,009.00      06026
+## 128 $22,012.00      06825
+## 129 $22,016.00      06418
+## 130 $22,039.00      06457
+## 131 $22,134.00      06249
+## 132 $22,195.00      06413
+## 133 $22,231.00      06517
+## 134 $22,316.00      06255
+## 135 $22,361.00      06278
+## 136 $22,401.00      06063
+## 137 $22,479.00      06098
+## 138 $22,514.00      06002
+## 139 $22,525.00      06232
+## 140 $22,546.00      06076
+## 141 $22,563.00      06759
+## 142 $22,637.00      06798
+## 143 $22,667.00      06460
+## 144 $22,753.00      06242
+## 145 $22,793.00      06877
+## 146 $22,929.00      06469
+## 147 $23,004.00      06096
+## 148 $23,007.00      06759
+## 149 $23,037.00      06405
+## 150 $23,155.00      06417
+## 151 $23,264.00      06840
+## 152 $23,429.00      06441
+## 153 $23,555.00      06820
+## 154 $23,819.00      06443
+## 155 $23,871.00      06417
+## 156 $23,874.00      06897
+## 157 $23,905.00      06371
+## 158 $23,924.00      06098
+## 159 $23,985.00      06371
+## 160 $24,076.00      06088
+## 161 $24,271.00      06027
+## 162 $24,513.00      06279
+## 163 $24,596.00      06018
+## 164 $24,647.00      06235
+## 165 $24,710.00 06334-1300
+## 166 $24,715.00      06883
+## 167 $24,869.00      06880
+## 168 $24,893.00      06784
+## 169 $25,143.00      06268
+## 170 $25,188.00      06264
+## 171 $25,260.00      06475
+## 172 $25,641.00      06417
+## 173 $25,885.00      06039
+## 174 $26,200.00      06417
+## 175 $26,218.00      06106
+## 176 $26,379.00      06830
+## 177 $26,396.00      06422
+## 178 $27,042.00      06235
+## 179 $27,691.00      06612
+## 180 $27,799.00      06021
+## 181 $28,230.00      06757
+## 182 $28,325.00      06612
+## 183 $28,433.00      06076
+## 184 $28,568.00      06796
+## 185 $28,701.00 06247-1416
+## 186 $29,347.00      06794
+## 187 $30,742.00      06498
+## 188 $31,535.00      06031
+## 189 $34,056.00      06031
+## 190 $36,387.00      06058
+## 191 $41,010.00      06611
+## 192 $44,824.00      06473
+## 193 $50,946.00      06759
+## 194 $56,455.00      06247
+## 195 $60,918.00      06069</code></pre>
 
 
 

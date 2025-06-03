@@ -1,79 +1,103 @@
 ---
-title: "Demo_Sasha"
+title: "Sasha Allen Disconnected Youth"
 output: html_document
 date: "2025-04-22"
 ---
 
-A demo notebook for Dow Jones News Fund data interns
+One in three students are at risk of not graduating high school in Connecticut which is  a result of the disconnected youth crisis where students are dropping out of school or barely passing with no career or college opportunities in early adulthood. I have identified the areas that have been impacted the hardest and am comparing them to the median household income and the per-pupil state, local and federal education funding in each district to the accountability index, which is the percentage of total possible points earned by each district and school. So far, I have found there is some relationship between low per-pupil funding and low accountability index rates but will continue to look into this. 
 
-During the week’s training, you will work on a project called Investigate Your Community to produce detailed story pitches relevant to their summer internship positions. The goal is to have the students research a topic relevant to your newsroom so they can get to work immediately at the internship. 
+This story is extremely timely because this issue has been brought to light in the past year, and there was legislation that was introduced this session to increase funding for at-risk students. The target audience for this story is anyone in Connecticut who is in the school system or knows anyone involved in the school system. This way, they can be more informed on what the state is trying to  do as well as the contributing factors to the crisis. 
 
-Here are some examples from last year’s DJNF data journalism training:
+People to interview are: 
+Rep. Anthony L. Nolan, he introduced a bill to increase education funding.
+Donna Hamzy, helped craft the Young People's Plan, which is a ten year plan for funding to help the crisis
+Someone from the bill testimony could be a good place to start with people closely connected to the issue, preferrably a student who has experienced disconnection in the school system. (https://www.cga.ct.gov/aspx/CGADisplayTestimonies/CGADisplayTestimony.aspx?bill=SB-01511&doc_year=2025)
 
-Hannah Rosenberger, at ASI Media/Counselor magazine, produced this analysis on name, image and likeness trends: https://hrosenberger.github.io/ASI-NIL-Project/
+This could possibly impact the funding for education, although it seems like there is already some initiative to change policy. Hopefully from this more nonprofits will be able to help supplement in high need areas from this as well. 
 
-Shifra Dayak, an intern at the Connecticut Mirror, produced this analysis of environment spill data: https://shifradayak.github.io/DJNF_Merrill/ct_env_spills.html.
+I was mainly interested in this story because I had never heard of the disconnected youth crisis before and for a rich state known for having a fairly good education system, one in three students should not be dropping out. I think it will be interesting to see if there are other underlying issues, and if I am able I also want to look into the incarceration rates of young people to see if they match up to areas experiencing high rates of disconnected youth. However, this data was not readily available so I need to get this before I can look into it.
 
-Michael Zhang, an intern at the Houston Landing, explored local election data: https://michaelzhangreporter.github.io/Houston_Campaign_Finance/
+Photo and graphics: Map of the issue zipcodes or districts, double bar graph of the top issue districts or zipcodes and the per-pupil funding in each area, same thing with the census data on median household income. Photos of students who are featured in the interview?
 
+I need to gather more data then I have right now. I need census data on median household income, the incarceration data and I need to keep up with the ongoing legislation and spending. I also want to see if there are any nonprofits dedicated to supporting the crisis and where these organizations are located. 
 
-Here's what your newsroom suggested for a project
-I thought it could be interesting for her to look at the Disconnected Youth issue, as it’s likely to be a topic this session. She could look at the Dalio report and perhaps this Next Generation Accountability report from the state that shows how well districts are preparing students for next steps.
+Estimated delivery is 
 
-
-
-This notebook helps you get started
-
-# Load software libraries
 ```{r}
-#install.packages("tidyverse")
-#install.packages("janitor")
-#install.packages("readxl")
-#install.packages("rvest")
 library(tidyverse)
 library(janitor)
 library(readxl)
 library(rvest)
-
+library(tidycensus)
 ```
 
 
-# Load your data
-
-
 ```{r}
-
+#disconnected youth data
 next_gen <- read.csv("../data/next_gen.csv") |> 
     clean_names()
-
+#zip code data (disconnected youth has no zip)
 zips_ct <- read.csv("../data/zips_ct.csv")|>
   clean_names()
 
 zips_ct <- zips_ct |> rename(
   reporting_district_code = organization_code,
 )
+
+#per pupil funding data split down to the district, 2017 to 2022  https://public-edsight.ct.gov/overview/per-pupil-expenditures-by-function---district/per-pupil-expenditures-by-funding-source---summary?language=en_US
+
+pp_21_22 <- read.csv("../data/per_pupil_2122.csv")|>
+  clean_names() |>
+  mutate(year = "21-22")
+
+pp_20_21 <- read.csv("../data/per_pupil_2021.csv")|>
+  clean_names()|>
+  mutate(year = "20-21")
+
+pp_19_20 <- read.csv("../data/per_pupil_1920.csv")|>
+  clean_names()|>
+  mutate(year = "19-20")
+
+pp_18_19 <- read.csv("../data/per_pupil_1819.csv")|>
+  clean_names()|>
+  mutate(year = "18-19")
+
+pp_17_18 <- read.csv("../data/per_pupil_1718.csv")|>
+  clean_names()|>
+  mutate(year = "17-18")
+  
+per_pupil_all <- bind_rows(pp_17_18, pp_18_19, pp_19_20, pp_20_21, pp_21_22)
+
+per_pupil_all <- per_pupil_all|> rename(
+  reporting_district_code = district_code,
+)
 ```
 
 
-# Explore the data types
 ```{r}
-
-#glimpse(YOUR_DATA)
-
 glimpse(next_gen)
 
 ```
 
-# Data exploration
 
 ```{r}
+#filter out percent
 next_gen_pct <- next_gen |>
   filter(category == "DistrictTot")|>
   select(rptng_district_name, reporting_district_code, total_points, total_possible_points, fall_of_year, accountability_index,) 
 
+
 #join dataset w/ zips to the disconnected dataset (could use this for viz purposes)
 zips_ct_selected <- zips_ct |> select(zipcode, reporting_district_code)
 zip_percentage <- left_join(next_gen_pct, zips_ct_selected, by = "reporting_district_code")
+
+#zip for 2021-2022 per pupil funding 
+pp_21_22 <- left_join(pp_21_22, zips_ct_selected, by = c("district_code" = "reporting_district_code"))
+
+
+#add zips to the per-pupil funding dataset
+per_pupil_all <- left_join(per_pupil_all, zips_ct_selected, by = "reporting_district_code")
+
 
 #counties with the highest rates of disconnected youth
 zip_pct_peryear <- zip_percentage |>
@@ -82,10 +106,19 @@ zip_pct_peryear <- zip_percentage |>
 ```
 
 ```{r}
-#counties with the highest rates of disconnected youth
+#comparing most recent data from next gen to per pupil funding to figure out which zips get the least
 
-
-# Questions 
+#im not sure what's going on with 06105 
+pp_21_22 |>
+  arrange(total) |>
+  select(total, zipcode)
+```
+```{r}
+zip_percentage |>
+  group_by(fall_of_year = "2021")|>
+  arrange(desc(accountability_index))|
+  select
+```
 
 
 
