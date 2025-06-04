@@ -14,14 +14,44 @@ Donna Hamzy, helped craft the Young People's Plan, which is a ten year plan for 
 Someone from the bill testimony could be a good place to start with people closely connected to the issue, preferably a student who has experienced disconnection in the school system. (https://www.cga.ct.gov/aspx/CGADisplayTestimonies/CGADisplayTestimony.aspx?bill=SB-01511&doc_year=2025)
 
 This could possibly impact the funding for education, although it seems like there is already some initiative to change policy. Hopefully from this more nonprofits will be able to help supplement in high need areas from this as well. This topic has been covered, but not in the way I am hoping to explore the issue. Much of the legislation has been reported on, but I want to focus more on the issues that the areas with the most youth in crisis are facing that can contribute to the level of crisis in these areas. 
+=======
+Hi Sasha - Good to see an advance in the research and more details about the project. Good to see the narrative integrated with the code on the .rmd document.
 
-I was mainly interested in this story because I had never heard of the disconnected youth crisis before and for a rich state known for having a fairly good education system, one in three students should not be dropping out. I think it will be interesting to see if there are other underlying issues, and if I am able I also want to look into the incarceration rates of young people to see if they match up to areas experiencing high rates of disconnected youth. However, this data was not readily available so I need to get this before I can look into it.
+So, you're still struggling to get a handle on this. Let's look at the main finding: one in three kids are dropping out or "are at risk" of dropping out. What does that mean? Are they dropping out or not?
+
+I would try to get the basic dropout rate first.
+
+1) How does that compare to the national average?
+2) What is the trend in the dropout rate?
+3) What are the factors driving the dropout rate?
+4) Can we get dropout rates by school district?
+>>>>>>> 56d6ff4aee52105fbf63cf08637896155c4b8e2b
+
+I think getting some enrollment data for the school districts would help. Then you can calculate the funds per student and the dropout rate and see if more money is working or not.
+
+I hope this is helpful! See my comments on your .RMD document. 
+
+**\*\*rsw comment: let's tighten up this opening sentence. it's a mouthful** . **Below you say one in three students are dropping out. that caught my eye**\*\* One in three students are at risk of not graduating high school in Connecticut which is a result of the disconnected youth crisis where students are dropping out of school or barely passing with no career or college opportunities in early adulthood. I have identified the areas that **rsw comment: better, more active phrase?** [have been impacted the hardest]{.underline} and am comparing them to the median household income and the per-pupil state, local and federal education funding in each district to [the accountability index,]{.underline} **rsw comment: you'll want to explain this in more specific terms** which is the percentage of total possible points earned by each district and school. So far, I have found there is some relationship between low per-pupil funding and low accountability index rates but will continue to look into this.
+
+This story is extremely timely because [this issue has been brought to light in the past year]{.underline} **rsw comment: how?**, and there was legislation that was introduced this [session]{.underline} **of the Connecticut House? Senate?** to increase funding for at-risk students. The target audience for this story is anyone in Connecticut who is in the school system or knows anyone involved in the school system **rsw comments: parents, students, teachers, family members and friends of students**. This way, they can be more informed on what the state is trying to do as well as the contributing factors to the crisis.
+
+People to interview are: Rep. Anthony L. Nolan, he introduced a bill to increase education funding. Donna Hamzy, helped craft the Young People's Plan, which is a ten year plan for funding to help the crisis. ~~Someone from the bill testimony~~ **RSW COMMENT: A person who testified during the legislative hearings** could be a good place to start with people closely connected to the issue, preferrably a student who has experienced disconnection in the school system. (<https://www.cga.ct.gov/aspx/CGADisplayTestimonies/CGADisplayTestimony.aspx?bill=SB-01511&doc_year=2025>)
+
+This could possibly impact the funding for education, although it seems like there is already some initiative to change policy. Hopefully from this more nonprofits will be able to help supplement in high need areas from this as well.
+
+I was mainly interested in this story because I had never heard of the disconnected youth crisis before and for a rich state known for having a fairly good education system, **rsw comment: great. how many thousands of young people would this represent?** **one in three students should not be dropping out.** I think it will be interesting to see if there are other underlying issues, and if I am able I also want to look into the incarceration rates of young people to see if they match up to areas experiencing high rates of disconnected youth. However, this data was not readily available so I need to get this before I can look into it.
 
 Photo and graphics: Map of the issue zipcodes or districts, double bar graph of the top issue districts or zipcodes and the per-pupil funding in each area, same thing with the census data on median household income. Photos of students who are featured in the interview?
 
+<<<<<<< HEAD
 I need to gather more data then I have right now. I need census data on median household income, the incarceration data and I need to keep up with the ongoing legislation and spending. I also want to see if there are any nonprofits making a major impact in any of these areas on students. It is possible there are a lot, it was mentioned in the legislation. 
 
 Estimated delivery is beginning of July.
+=======
+I need to gather more data then I have right now. I need census data on median household income, the incarceration data and I need to keep up with the ongoing legislation **rsw comment: definitely try to get the legislative hearing record which might have more details and data** and spending. I also want to see if there are any nonprofits dedicated to supporting the crisis and where these organizations are located.
+
+Estimated delivery is
+>>>>>>> 56d6ff4aee52105fbf63cf08637896155c4b8e2b
 
 ```{r}
 library(tidyverse)
@@ -30,7 +60,6 @@ library(readxl)
 library(rvest)
 library(tidycensus)
 ```
-
 
 ```{r}
 #disconnected youth data
@@ -72,31 +101,41 @@ per_pupil_all <- per_pupil_all|> rename(
   reporting_district_code = district_code,
 )
 
-#graduation rate
+#statewide per pupil funding 
+pp_statewide <- read.csv("../data/per_pupil_state2.csv")|>
+  clean_names()
 
+#graduation rate
 graduation_rate_state<- read.csv("../data/state_graduation.csv")|>
   clean_names()
   
 graduation_rate <- read.csv("../data/graduation_rates1.csv")|>
   clean_names()
 
-
 #dropout rate by district
 dropout_rate <- read.csv("../data/dropout_rates1.csv")|>
   clean_names()
 
-#percent of students in high school past four years
+#percent of students in high school for more than four years
 still_enrolled <- read.csv("../data/over_four_year_enrollment.csv")|>
+  clean_names()
+
+#enrollment by district 
+enrollment_district <- read.csv("../data/enrollement_district.csv")|>
   clean_names()
 
 ```
 
 
 ```{r}
-glimpse(next_gen)
+#converting the year in per-pupil statewide data to just include the year in the fall of the school year so i can use it in the graphs below
+pp_statewide <- pp_statewide |>
+  mutate(year = str_sub(year, 1, 4) %>% as.numeric())
+
+pp_statewide <- pp_statewide |>
+  rename(fall_of_year = year)
 
 ```
-
 
 ```{r}
 #filter out percent
@@ -140,15 +179,20 @@ zip_pct_peryear <- zip_percentage |>
 ```
 
 ```{r}
-#comparing most recent data from next gen to per pupil funding to figure out which zips get the least
 
-#im not sure what's going on with 06105 
+```
+
+
+# rsw comment: good stuff. now let's get enrollment per district and get a funds per student statistic so we can compare. dept of education or connecticut school board would have enrollment data.,
+```{r}
+#this is per-pupil funding stats that combine local, fed and state funding split down by zipcode, just for the 2021 to 2022 school year. 
 pp_21_22 |>
   arrange(total) |>
   select(total, zipcode, district)
 ```
+#rsw comment: zip_percentage was not created so this code fails
 ```{r}
-#finding districts and zipcodes with the highest dropout rates
+#finding districts and zip codes with the highest dropout rates (this is hard because there is not data for all districts)
 dropout_rate |>
   arrange(desc(x2021_22)) |>
   select(x2021_22, zipcode, district)
@@ -161,6 +205,42 @@ graduation_rate |>
   select(x2021_22, zipcode, district)
 ```
 ```{r}
+next_gen_state <- next_gen |>
+  filter(school_name == "State of Connecticut")|>
+  select(fall_of_year, category, total_points, total_possible_points, accountability_index)|>
+  arrange(fall_of_year)
+```
+
+```{r}
+#so basically the number of dissociated youth has gone down over time in the state but is still pretty high especially since Connecticut is very highly funded.
+ggplot(next_gen_state, aes(x = fall_of_year, y = accountability_index)) +
+  geom_line(color = "blue", size = 1) +
+  geom_point(color = "darkblue", size = 1) +  # optional points
+  labs(
+    title = "Percent of Dissociated Youth in the State ",
+    x = "Fall of Year",
+    y = "Accountability Index"
+  ) +
+  theme_minimal()
+```
+```{r}
+#this is the per-pupil funding statewide in a very rough graph. The most interesting thing about this is the 2017-2018 school year, which follows the spike in 2017 in above graph. Funding is  directly connected to the crisis. 
+ggplot(pp_statewide, aes(x = fall_of_year, y = ppe)) +
+  geom_line(color = "blue", size = 1) +
+  geom_point(color = "darkblue", size = 1) +  # optional points
+  labs(
+    title = "Connecticut Per-Pupil Funding Over Time",
+    x = "Fall of school year",
+    y = "Per-Pupil Funding"
+  ) +
+  theme_minimal()
+```
+
+```{r}
 
 ```
+
+=======
+>>>>>>> 56d6ff4aee52105fbf63cf08637896155c4b8e2b
+
 
