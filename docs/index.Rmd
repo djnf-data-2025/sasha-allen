@@ -59,6 +59,9 @@ library(janitor)
 library(readxl)
 library(rvest)
 library(tidycensus)
+library(scales)
+library(stringr)
+library(readr)
 ```
 
 ```{r}
@@ -129,11 +132,14 @@ enrollment_district <- read.csv("../data/enrollement_district.csv")|>
 
 ```{r}
 #converting the year in per-pupil statewide data to just include the year in the fall of the school year so i can use it in the graphs below
-pp_statewide <- pp_statewide |>
-  mutate(year = str_sub(year, 1, 4) %>% as.numeric())
 
 pp_statewide <- pp_statewide |>
-  rename(fall_of_year = year)
+  mutate(
+    # Remove $ and commas, convert to numeric
+    ppe_numeric = str_remove_all(ppe, "[$,]") |> as.numeric(),
+    # Format numeric values with commas
+    ppe_formatted = comma(ppe_numeric)
+  )
 
 ```
 
@@ -143,8 +149,8 @@ next_gen_pct <- next_gen |>
   filter(category == "DistrictTot")|>
   select(rptng_district_name, reporting_district_code, total_points, total_possible_points, fall_of_year, accountability_index) 
 
-#join dataset w/ zips to the disconnected dataset (could use this for viz purposes)
-zips_ct_selected <- zips_ct |> select(zipcode, reporting_district_code)
+#join dataset w/ zips and town name to the disconnected dataset (could use this for viz purposes)
+zips_ct_selected <- zips_ct |> select(zipcode, reporting_district_code, town)
 zip_percentage <- left_join(next_gen_pct, zips_ct_selected, by = "reporting_district_code")
 
 #zip for 2021-2022 per pupil funding 
@@ -173,15 +179,10 @@ still_enrolled <- left_join(still_enrolled, zips_ct_selected, by = "reporting_di
 per_pupil_all <- left_join(per_pupil_all, zips_ct_selected, by = "reporting_district_code")
 
 #counties with the highest rates of disconnected youth
-zip_pct_peryear <- zip_percentage |>
-  summarise(yearly_pct_avg = sum()
-  )
+#zip_pct_peryear <- zip_percentage |>
+ # summarise(yearly_pct_avg = sum()
+ # )
 ```
-
-```{r}
-
-```
-
 
 # rsw comment: good stuff. now let's get enrollment per district and get a funds per student statistic so we can compare. dept of education or connecticut school board would have enrollment data.,
 ```{r}
@@ -212,21 +213,25 @@ next_gen_state <- next_gen |>
 ```
 
 ```{r}
-#so basically the number of dissociated youth has gone down over time in the state but is still pretty high especially since Connecticut is very highly funded.
+#The higher the accountability index, the better prepared students are. Students have been doing worse in the state since 2014 based on a series of factors. There was no data for 2019 or 2020.
 ggplot(next_gen_state, aes(x = fall_of_year, y = accountability_index)) +
-  geom_line(color = "blue", size = 1) +
+  geom_line(color = "blue", size = .5) +
+  ylim(65, 80) +
   geom_point(color = "darkblue", size = 1) +  # optional points
   labs(
-    title = "Percent of Dissociated Youth in the State ",
-    x = "Fall of Year",
-    y = "Accountability Index"
+    #title is horrible but this was just for comparison purposes
+    title = "Accountability Index by Year",
+    x = "Fall of School Year",
+    #this is based on the accountability index scores, or  the percent of the total number of possible points received based on the scoring system
+    y = "Percent of total possible points recieved"
   ) +
   theme_minimal()
 ```
 ```{r}
-#this is the per-pupil funding statewide in a very rough graph. The most interesting thing about this is the 2017-2018 school year, which follows the spike in 2017 in above graph. Funding is  directly connected to the crisis. 
-ggplot(pp_statewide, aes(x = fall_of_year, y = ppe)) +
-  geom_line(color = "blue", size = 1) +
+#this is the per-pupil funding statewide in a rough graph. Despite a pretty steady increase in per-pupil funding, there is still a steady decrease in the accountability index (a high accountability index is good). I think this would be a great focus for the story, but i need to break down into a more micro view to see issues in specific counties.
+ggplot(pp_statewide, aes(x = fall_of_year, y = ppe_numeric)) +
+  geom_line(color = "blue", size = .5) +
+  ylim(14000, 20000) +
   geom_point(color = "darkblue", size = 1) +  # optional points
   labs(
     title = "Connecticut Per-Pupil Funding Over Time",
@@ -237,10 +242,62 @@ ggplot(pp_statewide, aes(x = fall_of_year, y = ppe)) +
 ```
 
 ```{r}
+#comparing Connecticut state funding to the average funding per-pupil nation-wide. after this, i want to look at the dropout rates nationally and state-wide to see if the state's are above or below average, and compare from that. Then I want to 
+
+#average the accountability index for students by zipcode, graph all accountability index zips by year
+```
+
+
+```{r}
+per_pupil_parsed <- per_pupil_all |>
+  mutate(total = parse_number(total))
+```
+
+```{r}
+#im going to use this to find the towns with the lowest and highest accountability index in 2022 and to make a map. i am going to create a double bar chart comparing average per pupil funding for 2022 in each town with this accountability index for 2022
+
+#accountability index filter and averaging (average of districts in each town, i think town may be more readable in a graphic)
+
+zip_percentage_graphic <- zip_percentage |>
+  filter(fall_of_year == "2022")
+
+pct_graphic <- zip_percentage_graphic |>
+  select(town, accountability_index, fall_of_year)
+
+pct_graphic |>
+  group_by(town) |>
+  summarise(
+    avg_accountability_index = mean(accountability_index, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+
+#averaging the per pupil funding
+per_pupil_graphic <-per_pupil_parsed |>
+  filter(year == "21-22")
+
+pp_graphic <- per_pupil_graphic|>
+  select(total, town, year)
+
+pp_graphic |>
+  group_by(town) |>
+  summarise(
+    total = mean(total, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+
+
+
 
 ```
 
-=======
+```{r}
+str(per_pupil_all)
+```
+
+
+
 >>>>>>> 56d6ff4aee52105fbf63cf08637896155c4b8e2b
 
 
