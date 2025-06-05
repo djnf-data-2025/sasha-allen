@@ -4,54 +4,23 @@ output: html_document
 date: "2025-04-22"
 ---
 
-One in three students are at risk of not graduating high school in Connecticut as of 2022 which is  a result of the disconnected youth crisis where students are dropping out of school or barely passing with no career or college opportunities in early adulthood. I have identified the areas that have been impacted the hardest and am comparing them to the median household income and the per-pupil state, local and federal education funding in each district to the accountability index, which is the percentage of total possible points earned by each district and school. So far, I have found there is some relationship between low per-pupil funding and low accountability index rates but will continue to look into both of these areas 
+Students in Connecticut are failing. In 2022, one in three students were at risk of not graduating high school, and chronic absenteeism rates are currently at some of the highest levels the state has seen. Despite this, local, state and federal government are spending more money per-student on the education system than they ever have. Spending in Connecticut hit $19,734 per-student in the 2021 to 2022 school year sitting over $1,000 higher than the national average of $18,614 per student. (https://nces.ed.gov/fastfacts/display.asp?id=66#:~:text=Response%3A,constant%202022%E2%80%9323%20dollars).&text=This%20amounts%20to%20an%20average,fall%20of%20that%20school%20year.)
 
-This story is extremely timely because this issue has been brought to light in the past year, and there was legislation introduced this session to increase funding for at-risk students. The target audience for this story is anyone in Connecticut who is in the school system or knows anyone involved in the school system. This way, they can be more informed on what the state is trying to  do as well as the contributing factors to the crisis. 
+The state has coined this as the Disconnected Youth Crisis, with consequences that lead to young people not entering the job market or pursuing higher education after either dropping out or graduating. The state created a method of looking at the overall performance of their schools called the Next Generation Accountability System which is based off of 12 broad factor indicators of student performance. Each school has a point maximum based on the opportunities and level of school (ex elementary schools have lower maximum points because they don't have graduation rates). In this data is the accountability index, or the percentage of the total number of possible points a school was able to get based on their ELA, math and science test scores, split up by overall test performance as well as the performance index for high-needs students. Other factors are also taken into consideration, but these are the main ones. However, despite heightened spending in the state on students, the accountability index state-wide has been increasing dramatically.
 
-People to interview are: 
-Rep. Anthony L. Nolan, he introduced a bill to increase education funding.
-Donna Hamzy, helped craft the Young People's Plan, which is a ten year plan for funding to help the crisis.
-Someone from the bill testimony could be a good place to start with people closely connected to the issue, preferably a student who has experienced disconnection in the school system. (https://www.cga.ct.gov/aspx/CGADisplayTestimonies/CGADisplayTestimony.aspx?bill=SB-01511&doc_year=2025)
+This story is extremely timely because this issue has been brought to light in the past two years. A report was published in October of 2023 detailing the failures of the state, and this report has sparked the introduction of legislation into the Connecticut Senate. The legislation proposed an increase in funding for at-risk students and better data collection methods and data collaboration.
 
-This could possibly impact the funding for education, although it seems like there is already some initiative to change policy. Hopefully from this more nonprofits will be able to help supplement in high need areas from this as well. This topic has been covered, but not in the way I am hoping to explore the issue. Much of the legislation has been reported on, but I want to focus more on the issues that the areas with the most youth in crisis are facing that can contribute to the level of crisis in these areas. 
-=======
-Hi Sasha - Good to see an advance in the research and more details about the project. Good to see the narrative integrated with the code on the .rmd document.
+The target audience for this story is anyone in Connecticut who is in the school system or knows anyone involved in the school system including parents, teachers, students, family members and friends of students. This way, they can be more informed on what the state is trying to do as well as the contributing factors to the crisis.
 
-So, you're still struggling to get a handle on this. Let's look at the main finding: one in three kids are dropping out or "are at risk" of dropping out. What does that mean? Are they dropping out or not?
-
-I would try to get the basic dropout rate first.
-
-1) How does that compare to the national average?
-2) What is the trend in the dropout rate?
-3) What are the factors driving the dropout rate?
-4) Can we get dropout rates by school district?
->>>>>>> 56d6ff4aee52105fbf63cf08637896155c4b8e2b
-
-I think getting some enrollment data for the school districts would help. Then you can calculate the funds per student and the dropout rate and see if more money is working or not.
-
-I hope this is helpful! See my comments on your .RMD document. 
-
-**\*\*rsw comment: let's tighten up this opening sentence. it's a mouthful** . **Below you say one in three students are dropping out. that caught my eye**\*\* One in three students are at risk of not graduating high school in Connecticut which is a result of the disconnected youth crisis where students are dropping out of school or barely passing with no career or college opportunities in early adulthood. I have identified the areas that **rsw comment: better, more active phrase?** [have been impacted the hardest]{.underline} and am comparing them to the median household income and the per-pupil state, local and federal education funding in each district to [the accountability index,]{.underline} **rsw comment: you'll want to explain this in more specific terms** which is the percentage of total possible points earned by each district and school. So far, I have found there is some relationship between low per-pupil funding and low accountability index rates but will continue to look into this.
-
-This story is extremely timely because [this issue has been brought to light in the past year]{.underline} **rsw comment: how?**, and there was legislation that was introduced this [session]{.underline} **of the Connecticut House? Senate?** to increase funding for at-risk students. The target audience for this story is anyone in Connecticut who is in the school system or knows anyone involved in the school system **rsw comments: parents, students, teachers, family members and friends of students**. This way, they can be more informed on what the state is trying to do as well as the contributing factors to the crisis.
-
-People to interview are: Rep. Anthony L. Nolan, he introduced a bill to increase education funding. Donna Hamzy, helped craft the Young People's Plan, which is a ten year plan for funding to help the crisis. ~~Someone from the bill testimony~~ **RSW COMMENT: A person who testified during the legislative hearings** could be a good place to start with people closely connected to the issue, preferrably a student who has experienced disconnection in the school system. (<https://www.cga.ct.gov/aspx/CGADisplayTestimonies/CGADisplayTestimony.aspx?bill=SB-01511&doc_year=2025>)
+People to interview are: Rep. Anthony L. Nolan, he introduced a bill to increase education funding. Donna Hamzy, helped craft the Young People's Plan, which is a ten year plan for funding to help the crisis. Someone who testified during the legislative hearings could be a good place to start finding people closely connected to the issue, preferably a student who has experienced disconnection in the school system. (<https://www.cga.ct.gov/aspx/CGADisplayTestimonies/CGADisplayTestimony.aspx?bill=SB-01511&doc_year=2025>)
 
 This could possibly impact the funding for education, although it seems like there is already some initiative to change policy. Hopefully from this more nonprofits will be able to help supplement in high need areas from this as well.
 
-I was mainly interested in this story because I had never heard of the disconnected youth crisis before and for a rich state known for having a fairly good education system, **rsw comment: great. how many thousands of young people would this represent?** **one in three students should not be dropping out.** I think it will be interesting to see if there are other underlying issues, and if I am able I also want to look into the incarceration rates of young people to see if they match up to areas experiencing high rates of disconnected youth. However, this data was not readily available so I need to get this before I can look into it.
+I was mainly interested in this story because I had never heard of the disconnected youth crisis before and for a rich state known for having a fairly good education system, and wondered why so many students were at risk of dropping out. I think it will be impactful to see who this actually is effecting the most, and what types of supports are offered in these areas.
 
-Photo and graphics: Map of the issue zipcodes or districts, double bar graph of the top issue districts or zipcodes and the per-pupil funding in each area, same thing with the census data on median household income. Photos of students who are featured in the interview?
-
-<<<<<<< HEAD
-I need to gather more data then I have right now. I need census data on median household income, the incarceration data and I need to keep up with the ongoing legislation and spending. I also want to see if there are any nonprofits making a major impact in any of these areas on students. It is possible there are a lot, it was mentioned in the legislation. 
+Photo and graphics: I have my double-axis graph comparing state per-pupil funding and , but I also want to create an interactive choropleth map based on the accountability index where you click on a town and are able to see the graduation rate, per-pupil funding and accountability index compared directly to the state averages.
 
 Estimated delivery is beginning of July.
-=======
-I need to gather more data then I have right now. I need census data on median household income, the incarceration data and I need to keep up with the ongoing legislation **rsw comment: definitely try to get the legislative hearing record which might have more details and data** and spending. I also want to see if there are any nonprofits dedicated to supporting the crisis and where these organizations are located.
-
-Estimated delivery is
->>>>>>> 56d6ff4aee52105fbf63cf08637896155c4b8e2b
 
 ```{r}
 library(tidyverse)
@@ -149,6 +118,11 @@ next_gen_pct <- next_gen |>
   filter(category == "DistrictTot")|>
   select(rptng_district_name, reporting_district_code, total_points, total_possible_points, fall_of_year, accountability_index) 
 
+next_gen2022 <- next_gen_pct |>
+  filter(fall_of_year == 2022)
+
+write_csv(next_gen2022, "next_gen2022.csv")
+
 #join dataset w/ zips and town name to the disconnected dataset (could use this for viz purposes)
 zips_ct_selected <- zips_ct |> select(zipcode, reporting_district_code, town)
 zip_percentage <- left_join(next_gen_pct, zips_ct_selected, by = "reporting_district_code")
@@ -213,6 +187,12 @@ next_gen_state <- next_gen |>
 ```
 
 ```{r}
+pp_statewide <- pp_statewide |>
+  mutate(fall_of_year = str_sub(year, 1, 4) %>% as.numeric())
+```
+
+
+```{r}
 #The higher the accountability index, the better prepared students are. Students have been doing worse in the state since 2014 based on a series of factors. There was no data for 2019 or 2020.
 ggplot(next_gen_state, aes(x = fall_of_year, y = accountability_index)) +
   geom_line(color = "blue", size = .5) +
@@ -240,6 +220,69 @@ ggplot(pp_statewide, aes(x = fall_of_year, y = ppe_numeric)) +
   ) +
   theme_minimal()
 ```
+```{r}
+double_axis <- left_join(pp_statewide, next_gen_state, by = "fall_of_year")
+```
+
+```{r}
+#double plot, however i have no idea how to have 2021 and 2022 show up on here for the accountability index so i am still working on it but these both are quite low. the issue is that there is no data for 2019 and 2020 (not sure why there is none for 2019)
+
+ggplot(double_axis, aes(x = fall_of_year)) +
+  geom_point(aes(y = ppe_numeric), color = "red", size = 2) +
+  geom_line(aes(y = ppe_numeric), color = "red", size = .5) +
+  geom_point(aes(y = (accountability_index - 70) * (6000 / 10) + 14000), color = "blue", size = 2) +
+  geom_line(aes(y = (accountability_index - 70) * (6000 / 10) + 14000), color = "blue", size = .5) +
+  scale_y_continuous(
+    name = "Per-Pupil Expenditure (Red)",
+    limits = c(14000, 20000),
+    sec.axis = sec_axis(
+      trans = ~ (. - 14000) * (10 / 6000) + 70,
+      name = "Accountability Index (Blue)",
+      breaks = seq(70, 80, 2)
+    )
+  ) +
+scale_x_continuous(
+  limits = c(2012, 2022),
+  breaks = seq(2012, 2022, 2),
+  labels = seq(2012, 2022, 2),
+  expand = expansion(mult = c(.01, .01))
+)+
+  labs(
+    title = "Connecticut Per-Pupil Funding Over Time",
+    y = "Per-Pupil Funding",
+    x = "Fall of School Year"
+  ) +
+  theme_minimal()+
+    theme(
+    axis.title.x = element_text(margin = margin(t = 15)),  
+    axis.title.y = element_text(margin = margin(r = 15)),
+    axis.title.y.right = element_text(margin = margin(l = 15)),
+    plot.title = element_text(margin = margin(b=15))
+    )
+```
+
+```{r}
+#this is for a line graph i am hoping to make for each town on what their grad rate has been. im doing grad rate because drop out rate did not have data for every area
+graduation_rate_1 <- graduation_rate |>
+  mutate(
+    x2023_24 = str_sub(x2023_24, 1, 4) |> as.numeric(),
+    x2022_23 = str_sub(x2022_23, 1, 4) |> as.numeric(),
+    x2021_22 = str_sub(x2021_22, 1, 4) |> as.numeric(),
+    x2020_21 = str_sub(x2020_21, 1, 4) |> as.numeric(),
+    x2019_20 = str_sub(x2019_20, 1, 4) |> as.numeric()
+  )
+
+town_avg_gradrate <- graduation_rate |>
+  pivot_longer(cols = starts_with("x"), names_to = "year", values_to = "grad_rate") |>
+  group_by(town, year) |>
+  summarise(mean_rate = mean(grad_rate, na.rm = TRUE), .groups = "drop")
+
+town_avg_gradrate <- town_avg_gradrate |>
+  mutate(year = str_remove(year, "^x"))
+
+write_csv(town_avg_gradrate, "town_avg_gradrate.csv")
+```
+
 
 ```{r}
 #comparing Connecticut state funding to the average funding per-pupil nation-wide. after this, i want to look at the dropout rates nationally and state-wide to see if the state's are above or below average, and compare from that. Then I want to 
@@ -295,7 +338,7 @@ pp_graphic |>
 ```{r}
 str(per_pupil_all)
 ```
-
+#map with the accountability index, you click on a town and you see comparision bar graphs with accountability index, graduation rate, per pupil funding, maybe amount of students in poverty
 
 
 >>>>>>> 56d6ff4aee52105fbf63cf08637896155c4b8e2b

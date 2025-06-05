@@ -1,0 +1,616 @@
+town,year,mean_rate
+Ansonia,2019_20,NA
+Ansonia,2020_21,NA
+Ansonia,2021_22,NA
+Ansonia,2022_23,NA
+Ansonia,2023_24,NA
+Avon,2019_20,NA
+Avon,2020_21,NA
+Avon,2021_22,NA
+Avon,2022_23,NA
+Avon,2023_24,NA
+Berlin,2019_20,NA
+Berlin,2020_21,NA
+Berlin,2021_22,NA
+Berlin,2022_23,NA
+Berlin,2023_24,NA
+Bethel,2019_20,NA
+Bethel,2020_21,NA
+Bethel,2021_22,NA
+Bethel,2022_23,NA
+Bethel,2023_24,NA
+Bloomfield,2019_20,NA
+Bloomfield,2020_21,NA
+Bloomfield,2021_22,NA
+Bloomfield,2022_23,NA
+Bloomfield,2023_24,NA
+Bolton,2019_20,NA
+Bolton,2020_21,NA
+Bolton,2021_22,NA
+Bolton,2022_23,NA
+Bolton,2023_24,NA
+Branford,2019_20,NA
+Branford,2020_21,NA
+Branford,2021_22,NA
+Branford,2022_23,NA
+Branford,2023_24,NA
+Bridgeport,2019_20,NA
+Bridgeport,2020_21,NA
+Bridgeport,2021_22,NA
+Bridgeport,2022_23,NA
+Bridgeport,2023_24,NA
+Bristol,2019_20,NA
+Bristol,2020_21,NA
+Bristol,2021_22,NA
+Bristol,2022_23,NA
+Bristol,2023_24,NA
+Brookfield,2019_20,NA
+Brookfield,2020_21,NA
+Brookfield,2021_22,NA
+Brookfield,2022_23,NA
+Brookfield,2023_24,NA
+Burlington,2019_20,NA
+Burlington,2020_21,NA
+Burlington,2021_22,NA
+Burlington,2022_23,NA
+Burlington,2023_24,NA
+Chaplin,2019_20,NA
+Chaplin,2020_21,NA
+Chaplin,2021_22,NA
+Chaplin,2022_23,NA
+Chaplin,2023_24,NA
+Cheshire,2019_20,NA
+Cheshire,2020_21,NA
+Cheshire,2021_22,NA
+Cheshire,2022_23,NA
+Cheshire,2023_24,NA
+Clinton,2019_20,NA
+Clinton,2020_21,NA
+Clinton,2021_22,NA
+Clinton,2022_23,NA
+Clinton,2023_24,NA
+Colchester,2019_20,NA
+Colchester,2020_21,NA
+Colchester,2021_22,NA
+Colchester,2022_23,NA
+Colchester,2023_24,NA
+Collinsville,2019_20,NA
+Collinsville,2020_21,NA
+Collinsville,2021_22,NA
+Collinsville,2022_23,NA
+Collinsville,2023_24,NA
+Coventry,2019_20,NA
+Coventry,2020_21,NA
+Coventry,2021_22,NA
+Coventry,2022_23,NA
+Coventry,2023_24,NA
+Cromwell,2019_20,NA
+Cromwell,2020_21,NA
+Cromwell,2021_22,NA
+Cromwell,2022_23,NA
+Cromwell,2023_24,NA
+Danbury,2019_20,NA
+Danbury,2020_21,NA
+Danbury,2021_22,NA
+Danbury,2022_23,NA
+Danbury,2023_24,NA
+Danielson,2019_20,NA
+Danielson,2020_21,NA
+Danielson,2021_22,NA
+Danielson,2022_23,NA
+Danielson,2023_24,NA
+Darien,2019_20,NA
+Darien,2020_21,NA
+Darien,2021_22,NA
+Darien,2022_23,NA
+Darien,2023_24,NA
+Deep River,2019_20,NA
+Deep River,2020_21,NA
+Deep River,2021_22,NA
+Deep River,2022_23,NA
+Deep River,2023_24,NA
+Derby,2019_20,NA
+Derby,2020_21,NA
+Derby,2021_22,NA
+Derby,2022_23,NA
+Derby,2023_24,NA
+Durham,2019_20,NA
+Durham,2020_21,NA
+Durham,2021_22,NA
+Durham,2022_23,NA
+Durham,2023_24,NA
+East Granby,2019_20,NA
+East Granby,2020_21,NA
+East Granby,2021_22,NA
+East Granby,2022_23,NA
+East Granby,2023_24,NA
+East Hampton,2019_20,NA
+East Hampton,2020_21,NA
+East Hampton,2021_22,NA
+East Hampton,2022_23,NA
+East Hampton,2023_24,NA
+East Hartford,2019_20,NA
+East Hartford,2020_21,NA
+East Hartford,2021_22,NA
+East Hartford,2022_23,NA
+East Hartford,2023_24,NA
+East Haven,2019_20,NA
+East Haven,2020_21,NA
+East Haven,2021_22,NA
+East Haven,2022_23,NA
+East Haven,2023_24,NA
+East Lyme,2019_20,NA
+East Lyme,2020_21,NA
+East Lyme,2021_22,NA
+East Lyme,2022_23,NA
+East Lyme,2023_24,NA
+East Windsor,2019_20,NA
+East Windsor,2020_21,NA
+East Windsor,2021_22,NA
+East Windsor,2022_23,NA
+East Windsor,2023_24,NA
+Easton,2019_20,NA
+Easton,2020_21,NA
+Easton,2021_22,NA
+Easton,2022_23,NA
+Easton,2023_24,NA
+Ellington,2019_20,NA
+Ellington,2020_21,NA
+Ellington,2021_22,NA
+Ellington,2022_23,NA
+Ellington,2023_24,NA
+Enfield,2019_20,NA
+Enfield,2020_21,NA
+Enfield,2021_22,NA
+Enfield,2022_23,NA
+Enfield,2023_24,NA
+Fairfield,2019_20,NA
+Fairfield,2020_21,NA
+Fairfield,2021_22,NA
+Fairfield,2022_23,NA
+Fairfield,2023_24,NA
+Falls Village,2019_20,NA
+Falls Village,2020_21,NA
+Falls Village,2021_22,NA
+Falls Village,2022_23,NA
+Falls Village,2023_24,NA
+Farmington,2019_20,NA
+Farmington,2020_21,NA
+Farmington,2021_22,NA
+Farmington,2022_23,NA
+Farmington,2023_24,NA
+Glastonbury,2019_20,NA
+Glastonbury,2020_21,NA
+Glastonbury,2021_22,NA
+Glastonbury,2022_23,NA
+Glastonbury,2023_24,NA
+Granby,2019_20,NA
+Granby,2020_21,NA
+Granby,2021_22,NA
+Granby,2022_23,NA
+Granby,2023_24,NA
+Greenwich,2019_20,NA
+Greenwich,2020_21,NA
+Greenwich,2021_22,NA
+Greenwich,2022_23,NA
+Greenwich,2023_24,NA
+Griswold,2019_20,NA
+Griswold,2020_21,NA
+Griswold,2021_22,NA
+Griswold,2022_23,NA
+Griswold,2023_24,NA
+Guilford,2019_20,NA
+Guilford,2020_21,NA
+Guilford,2021_22,NA
+Guilford,2022_23,NA
+Guilford,2023_24,NA
+Hamden,2019_20,NA
+Hamden,2020_21,NA
+Hamden,2021_22,NA
+Hamden,2022_23,NA
+Hamden,2023_24,NA
+Hampton,2019_20,NA
+Hampton,2020_21,NA
+Hampton,2021_22,NA
+Hampton,2022_23,NA
+Hampton,2023_24,NA
+Hartford,2019_20,NA
+Hartford,2020_21,NA
+Hartford,2021_22,NA
+Hartford,2022_23,NA
+Hartford,2023_24,NA
+Hebron,2019_20,NA
+Hebron,2020_21,NA
+Hebron,2021_22,NA
+Hebron,2022_23,NA
+Hebron,2023_24,NA
+Higganum,2019_20,NA
+Higganum,2020_21,NA
+Higganum,2021_22,NA
+Higganum,2022_23,NA
+Higganum,2023_24,NA
+Lebanon,2019_20,NA
+Lebanon,2020_21,NA
+Lebanon,2021_22,NA
+Lebanon,2022_23,NA
+Lebanon,2023_24,NA
+Ledyard,2019_20,NA
+Ledyard,2020_21,NA
+Ledyard,2021_22,NA
+Ledyard,2022_23,NA
+Ledyard,2023_24,NA
+Litchfield,2019_20,NA
+Litchfield,2020_21,NA
+Litchfield,2021_22,NA
+Litchfield,2022_23,NA
+Litchfield,2023_24,NA
+Madison,2019_20,NA
+Madison,2020_21,NA
+Madison,2021_22,NA
+Madison,2022_23,NA
+Madison,2023_24,NA
+Manchester,2019_20,NA
+Manchester,2020_21,NA
+Manchester,2021_22,NA
+Manchester,2022_23,NA
+Manchester,2023_24,NA
+Meriden,2019_20,NA
+Meriden,2020_21,NA
+Meriden,2021_22,NA
+Meriden,2022_23,NA
+Meriden,2023_24,NA
+Middlebury,2019_20,NA
+Middlebury,2020_21,NA
+Middlebury,2021_22,NA
+Middlebury,2022_23,NA
+Middlebury,2023_24,NA
+Middletown,2019_20,NA
+Middletown,2020_21,NA
+Middletown,2021_22,NA
+Middletown,2022_23,NA
+Middletown,2023_24,NA
+Milford,2019_20,NA
+Milford,2020_21,NA
+Milford,2021_22,NA
+Milford,2022_23,NA
+Milford,2023_24,NA
+Monroe,2019_20,NA
+Monroe,2020_21,NA
+Monroe,2021_22,NA
+Monroe,2022_23,NA
+Monroe,2023_24,NA
+Moodus,2019_20,NA
+Moodus,2020_21,NA
+Moodus,2021_22,NA
+Moodus,2022_23,NA
+Moodus,2023_24,NA
+Mystic,2019_20,NA
+Mystic,2020_21,NA
+Mystic,2021_22,NA
+Mystic,2022_23,NA
+Mystic,2023_24,NA
+Naugatuck,2019_20,NA
+Naugatuck,2020_21,NA
+Naugatuck,2021_22,NA
+Naugatuck,2022_23,NA
+Naugatuck,2023_24,NA
+New Britain,2019_20,NA
+New Britain,2020_21,NA
+New Britain,2021_22,NA
+New Britain,2022_23,NA
+New Britain,2023_24,NA
+New Canaan,2019_20,NA
+New Canaan,2020_21,NA
+New Canaan,2021_22,NA
+New Canaan,2022_23,NA
+New Canaan,2023_24,NA
+New Fairfield,2019_20,NA
+New Fairfield,2020_21,NA
+New Fairfield,2021_22,NA
+New Fairfield,2022_23,NA
+New Fairfield,2023_24,NA
+New Haven,2019_20,NA
+New Haven,2020_21,NA
+New Haven,2021_22,NA
+New Haven,2022_23,NA
+New Haven,2023_24,NA
+New London,2019_20,NA
+New London,2020_21,NA
+New London,2021_22,NA
+New London,2022_23,NA
+New London,2023_24,NA
+New Milford,2019_20,NA
+New Milford,2020_21,NA
+New Milford,2021_22,NA
+New Milford,2022_23,NA
+New Milford,2023_24,NA
+Newington,2019_20,NA
+Newington,2020_21,NA
+Newington,2021_22,NA
+Newington,2022_23,NA
+Newington,2023_24,NA
+Newtown,2019_20,NA
+Newtown,2020_21,NA
+Newtown,2021_22,NA
+Newtown,2022_23,NA
+Newtown,2023_24,NA
+North Grosvenor Dale,2019_20,NA
+North Grosvenor Dale,2020_21,NA
+North Grosvenor Dale,2021_22,NA
+North Grosvenor Dale,2022_23,NA
+North Grosvenor Dale,2023_24,NA
+North Haven,2019_20,NA
+North Haven,2020_21,NA
+North Haven,2021_22,NA
+North Haven,2022_23,NA
+North Haven,2023_24,NA
+North Stonington,2019_20,NA
+North Stonington,2020_21,NA
+North Stonington,2021_22,NA
+North Stonington,2022_23,NA
+North Stonington,2023_24,NA
+Northford,2019_20,NA
+Northford,2020_21,NA
+Northford,2021_22,NA
+Northford,2022_23,NA
+Northford,2023_24,NA
+Norwalk,2019_20,NA
+Norwalk,2020_21,NA
+Norwalk,2021_22,NA
+Norwalk,2022_23,NA
+Norwalk,2023_24,NA
+Norwich,2019_20,NA
+Norwich,2020_21,NA
+Norwich,2021_22,NA
+Norwich,2022_23,NA
+Norwich,2023_24,NA
+Oakdale,2019_20,NA
+Oakdale,2020_21,NA
+Oakdale,2021_22,NA
+Oakdale,2022_23,NA
+Oakdale,2023_24,NA
+Old Lyme,2019_20,NA
+Old Lyme,2020_21,NA
+Old Lyme,2021_22,NA
+Old Lyme,2022_23,NA
+Old Lyme,2023_24,NA
+Old Saybrook,2019_20,NA
+Old Saybrook,2020_21,NA
+Old Saybrook,2021_22,NA
+Old Saybrook,2022_23,NA
+Old Saybrook,2023_24,NA
+Oxford,2019_20,NA
+Oxford,2020_21,NA
+Oxford,2021_22,NA
+Oxford,2022_23,NA
+Oxford,2023_24,NA
+Pawcatuck,2019_20,NA
+Pawcatuck,2020_21,NA
+Pawcatuck,2021_22,NA
+Pawcatuck,2022_23,NA
+Pawcatuck,2023_24,NA
+Plainfield,2019_20,NA
+Plainfield,2020_21,NA
+Plainfield,2021_22,NA
+Plainfield,2022_23,NA
+Plainfield,2023_24,NA
+Plainville,2019_20,NA
+Plainville,2020_21,NA
+Plainville,2021_22,NA
+Plainville,2022_23,NA
+Plainville,2023_24,NA
+Portland,2019_20,NA
+Portland,2020_21,NA
+Portland,2021_22,NA
+Portland,2022_23,NA
+Portland,2023_24,NA
+Prospect,2019_20,NA
+Prospect,2020_21,NA
+Prospect,2021_22,NA
+Prospect,2022_23,NA
+Prospect,2023_24,NA
+Putnam,2019_20,NA
+Putnam,2020_21,NA
+Putnam,2021_22,NA
+Putnam,2022_23,NA
+Putnam,2023_24,NA
+Ridgefield,2019_20,NA
+Ridgefield,2020_21,NA
+Ridgefield,2021_22,NA
+Ridgefield,2022_23,NA
+Ridgefield,2023_24,NA
+Rocky Hill,2019_20,NA
+Rocky Hill,2020_21,NA
+Rocky Hill,2021_22,NA
+Rocky Hill,2022_23,NA
+Rocky Hill,2023_24,NA
+Seymour,2019_20,NA
+Seymour,2020_21,NA
+Seymour,2021_22,NA
+Seymour,2022_23,NA
+Seymour,2023_24,NA
+Shelton,2019_20,NA
+Shelton,2020_21,NA
+Shelton,2021_22,NA
+Shelton,2022_23,NA
+Shelton,2023_24,NA
+Simsbury,2019_20,NA
+Simsbury,2020_21,NA
+Simsbury,2021_22,NA
+Simsbury,2022_23,NA
+Simsbury,2023_24,NA
+Somers,2019_20,NA
+Somers,2020_21,NA
+Somers,2021_22,NA
+Somers,2022_23,NA
+Somers,2023_24,NA
+South Windsor,2019_20,NA
+South Windsor,2020_21,NA
+South Windsor,2021_22,NA
+South Windsor,2022_23,NA
+South Windsor,2023_24,NA
+Southington,2019_20,NA
+Southington,2020_21,NA
+Southington,2021_22,NA
+Southington,2022_23,NA
+Southington,2023_24,NA
+Stafford Springs,2019_20,NA
+Stafford Springs,2020_21,NA
+Stafford Springs,2021_22,NA
+Stafford Springs,2022_23,NA
+Stafford Springs,2023_24,NA
+Stamford,2019_20,NA
+Stamford,2020_21,NA
+Stamford,2021_22,NA
+Stamford,2022_23,NA
+Stamford,2023_24,NA
+Storrs,2019_20,NA
+Storrs,2020_21,NA
+Storrs,2021_22,NA
+Storrs,2022_23,NA
+Storrs,2023_24,NA
+Stratford,2019_20,NA
+Stratford,2020_21,NA
+Stratford,2021_22,NA
+Stratford,2022_23,NA
+Stratford,2023_24,NA
+Suffield,2019_20,NA
+Suffield,2020_21,NA
+Suffield,2021_22,NA
+Suffield,2022_23,NA
+Suffield,2023_24,NA
+Terryville,2019_20,NA
+Terryville,2020_21,NA
+Terryville,2021_22,NA
+Terryville,2022_23,NA
+Terryville,2023_24,NA
+Thomaston,2019_20,NA
+Thomaston,2020_21,NA
+Thomaston,2021_22,NA
+Thomaston,2022_23,NA
+Thomaston,2023_24,NA
+Tolland,2019_20,NA
+Tolland,2020_21,NA
+Tolland,2021_22,NA
+Tolland,2022_23,NA
+Tolland,2023_24,NA
+Torrington,2019_20,NA
+Torrington,2020_21,NA
+Torrington,2021_22,NA
+Torrington,2022_23,NA
+Torrington,2023_24,NA
+Trumbull,2019_20,NA
+Trumbull,2020_21,NA
+Trumbull,2021_22,NA
+Trumbull,2022_23,NA
+Trumbull,2023_24,NA
+Vernon,2019_20,NA
+Vernon,2020_21,NA
+Vernon,2021_22,NA
+Vernon,2022_23,NA
+Vernon,2023_24,NA
+Wallingford,2019_20,NA
+Wallingford,2020_21,NA
+Wallingford,2021_22,NA
+Wallingford,2022_23,NA
+Wallingford,2023_24,NA
+Washington Depot,2019_20,NA
+Washington Depot,2020_21,NA
+Washington Depot,2021_22,NA
+Washington Depot,2022_23,NA
+Washington Depot,2023_24,NA
+Waterbury,2019_20,NA
+Waterbury,2020_21,NA
+Waterbury,2021_22,NA
+Waterbury,2022_23,NA
+Waterbury,2023_24,NA
+Waterford,2019_20,NA
+Waterford,2020_21,NA
+Waterford,2021_22,NA
+Waterford,2022_23,NA
+Waterford,2023_24,NA
+Watertown,2019_20,NA
+Watertown,2020_21,NA
+Watertown,2021_22,NA
+Watertown,2022_23,NA
+Watertown,2023_24,NA
+West Hartford,2019_20,NA
+West Hartford,2020_21,NA
+West Hartford,2021_22,NA
+West Hartford,2022_23,NA
+West Hartford,2023_24,NA
+West Haven,2019_20,NA
+West Haven,2020_21,NA
+West Haven,2021_22,NA
+West Haven,2022_23,NA
+West Haven,2023_24,NA
+Westbrook,2019_20,NA
+Westbrook,2020_21,NA
+Westbrook,2021_22,NA
+Westbrook,2022_23,NA
+Westbrook,2023_24,NA
+Weston,2019_20,NA
+Weston,2020_21,NA
+Weston,2021_22,NA
+Weston,2022_23,NA
+Weston,2023_24,NA
+Westport,2019_20,NA
+Westport,2020_21,NA
+Westport,2021_22,NA
+Westport,2022_23,NA
+Westport,2023_24,NA
+Wethersfield,2019_20,NA
+Wethersfield,2020_21,NA
+Wethersfield,2021_22,NA
+Wethersfield,2022_23,NA
+Wethersfield,2023_24,NA
+Willimantic,2019_20,NA
+Willimantic,2020_21,NA
+Willimantic,2021_22,NA
+Willimantic,2022_23,NA
+Willimantic,2023_24,NA
+Wilton,2019_20,NA
+Wilton,2020_21,NA
+Wilton,2021_22,NA
+Wilton,2022_23,NA
+Wilton,2023_24,NA
+Windsor,2019_20,NA
+Windsor,2020_21,NA
+Windsor,2021_22,NA
+Windsor,2022_23,NA
+Windsor,2023_24,NA
+Windsor Locks,2019_20,NA
+Windsor Locks,2020_21,NA
+Windsor Locks,2021_22,NA
+Windsor Locks,2022_23,NA
+Windsor Locks,2023_24,NA
+Winsted,2019_20,NA
+Winsted,2020_21,NA
+Winsted,2021_22,NA
+Winsted,2022_23,NA
+Winsted,2023_24,NA
+Wolcott,2019_20,NA
+Wolcott,2020_21,NA
+Wolcott,2021_22,NA
+Wolcott,2022_23,NA
+Wolcott,2023_24,NA
+Woodbridge,2019_20,NA
+Woodbridge,2020_21,NA
+Woodbridge,2021_22,NA
+Woodbridge,2022_23,NA
+Woodbridge,2023_24,NA
+Woodbury,2019_20,NA
+Woodbury,2020_21,NA
+Woodbury,2021_22,NA
+Woodbury,2022_23,NA
+Woodbury,2023_24,NA
+Woodstock,2019_20,NA
+Woodstock,2020_21,NA
+Woodstock,2021_22,NA
+Woodstock,2022_23,NA
+Woodstock,2023_24,NA
+NA,2019_20,NA
+NA,2020_21,NA
+NA,2021_22,NA
+NA,2022_23,NA
+NA,2023_24,NA
