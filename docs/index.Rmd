@@ -1,10 +1,10 @@
 ---
-title: "Sasha Allen Disconnected Youth"
+title: "Disconnected Youth in Connecticut"
 output: html_document
 date: "2025-04-22"
 ---
 
-Students in Connecticut are failing. In 2022, one in three students were at risk of not graduating high school, and chronic absenteeism rates are currently at some of the highest levels the state has seen. Despite this, local, state and federal government are spending more money per-student on the education system than they ever have. Spending in Connecticut hit $19,734 per-student in the 2021 to 2022 school year sitting over $1,000 higher than the national average of $18,614 per student. (https://nces.ed.gov/fastfacts/display.asp?id=66#:~:text=Response%3A,constant%202022%E2%80%9323%20dollars).&text=This%20amounts%20to%20an%20average,fall%20of%20that%20school%20year.)
+Students in Connecticut are failing. In 2022, one in three students were at risk of not graduating high school, and chronic absenteeism rates are currently at some of the highest levels the state has seen. Despite this, local, state and federal government are spending more money per-student on the education system than they ever have. Spending in Connecticut hit $19,734 per-student in the 2021 to 2022 school year sitting over $1,000 higher than the national average of $18,614 per student. (https://nces.ed.gov/fastfacts/display.asp?id=66#)
 
 The state has coined this as the Disconnected Youth Crisis, with consequences that lead to young people not entering the job market or pursuing higher education after either dropping out or graduating. The state created a method of looking at the overall performance of their schools called the Next Generation Accountability System which is based off of 12 broad factor indicators of student performance. Each school has a point maximum based on the opportunities and level of school (ex elementary schools have lower maximum points because they don't have graduation rates). In this data is the accountability index, or the percentage of the total number of possible points a school was able to get based on their ELA, math and science test scores, split up by overall test performance as well as the performance index for high-needs students. Other factors are also taken into consideration, but these are the main ones. However, despite heightened spending in the state on students, the accountability index state-wide has been increasing dramatically.
 
@@ -18,9 +18,16 @@ This could possibly impact the funding for education, although it seems like the
 
 I was mainly interested in this story because I had never heard of the disconnected youth crisis before and for a rich state known for having a fairly good education system, and wondered why so many students were at risk of dropping out. I think it will be impactful to see who this actually is effecting the most, and what types of supports are offered in these areas.
 
-Photo and graphics: I have my double-axis graph comparing state per-pupil funding and , but I also want to create an interactive choropleth map based on the accountability index where you click on a town and are able to see the graduation rate, per-pupil funding and accountability index compared directly to the state averages.
+Photo and graphics: I have my double-axis graph comparing state per-pupil funding and , but I also want to create an interactive choropleth map based on the accountability index where you click on a town and are able to see the graduation rate, per-pupil funding and accountability index compared directly to the state averages. 
+  (I am not sure if this is too ambitious. If it is, I could dumb it down and and just include these other statistics on the details of each town. The comparison would be harder though.)
 
 Estimated delivery is beginning of July.
+
+As for what I still need to do, I am hoping to make some more progress with my map. The district map I am using in datawrapper does has some gaps in the template so I am hoping to refine the data and use towns. I also want to recreate my double axis graph in datawrapper or flourish for a bit of visual consistency.
+
+<iframe title="Where are students struggling the most?" aria-label="Map" id="datawrapper-chart-big1o" src="https://datawrapper.dwcdn.net/big1o/3/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="400" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
+</script>
+
 
 ```{r}
 library(tidyverse)
@@ -158,14 +165,14 @@ per_pupil_all <- left_join(per_pupil_all, zips_ct_selected, by = "reporting_dist
  # )
 ```
 
-# rsw comment: good stuff. now let's get enrollment per district and get a funds per student statistic so we can compare. dept of education or connecticut school board would have enrollment data.,
+
 ```{r}
 #this is per-pupil funding stats that combine local, fed and state funding split down by zipcode, just for the 2021 to 2022 school year. 
 pp_21_22 |>
   arrange(total) |>
   select(total, zipcode, district)
 ```
-#rsw comment: zip_percentage was not created so this code fails
+
 ```{r}
 #finding districts and zip codes with the highest dropout rates (this is hard because there is not data for all districts)
 dropout_rate |>
@@ -225,7 +232,7 @@ double_axis <- left_join(pp_statewide, next_gen_state, by = "fall_of_year")
 ```
 
 ```{r}
-#double plot, however i have no idea how to have 2021 and 2022 show up on here for the accountability index so i am still working on it but these both are quite low. the issue is that there is no data for 2019 and 2020 (not sure why there is none for 2019)
+#double plot, however i have no idea how to have 2021 and 2022 show up on here for the accountability index so i am still working on it but these both are quite low as well. there is no data for 2019 and 2020 
 
 ggplot(double_axis, aes(x = fall_of_year)) +
   geom_point(aes(y = ppe_numeric), color = "red", size = 2) +
@@ -260,37 +267,31 @@ scale_x_continuous(
     plot.title = element_text(margin = margin(b=15))
     )
 ```
-
 ```{r}
-#this is for a line graph i am hoping to make for each town on what their grad rate has been. im doing grad rate because drop out rate did not have data for every area
-graduation_rate_1 <- graduation_rate |>
-  mutate(
-    x2023_24 = str_sub(x2023_24, 1, 4) |> as.numeric(),
-    x2022_23 = str_sub(x2022_23, 1, 4) |> as.numeric(),
-    x2021_22 = str_sub(x2021_22, 1, 4) |> as.numeric(),
-    x2020_21 = str_sub(x2020_21, 1, 4) |> as.numeric(),
-    x2019_20 = str_sub(x2019_20, 1, 4) |> as.numeric()
+graduation_rate_long <- graduation_rate_state |> 
+  pivot_longer(
+    cols = starts_with("x"),       # or: cols = -district
+    names_to = "school_year", 
+    values_to = "grad_rate"
   )
 
-town_avg_gradrate <- graduation_rate |>
-  pivot_longer(cols = starts_with("x"), names_to = "year", values_to = "grad_rate") |>
-  group_by(town, year) |>
-  summarise(mean_rate = mean(grad_rate, na.rm = TRUE), .groups = "drop")
-
-town_avg_gradrate <- town_avg_gradrate |>
-  mutate(year = str_remove(year, "^x"))
-
-write_csv(town_avg_gradrate, "town_avg_gradrate.csv")
 ```
 
 
+#i have a bunch of notes and stuff down here this section is my brainstorming 
 ```{r}
-#comparing Connecticut state funding to the average funding per-pupil nation-wide. after this, i want to look at the dropout rates nationally and state-wide to see if the state's are above or below average, and compare from that. Then I want to 
-
-#average the accountability index for students by zipcode, graph all accountability index zips by year
+#grad rate
+#ggplot(graduation_rate_state, aes(x = school_year, y = grad_rate)) +
+  #geom_line(color = "blue", size = .5) +
+  #ylim(14000, 20000) +
+  #geom_point(color = "darkblue", size = 1) +  # optional points
+  #labs(
+   # title = "Connecticut Graduation Rate",
+   # x = "Fall of school year",
+   # y = "Graduation Rate"
+ # ) +
+  #theme_minimal()
 ```
-
-
 ```{r}
 per_pupil_parsed <- per_pupil_all |>
   mutate(total = parse_number(total))
@@ -338,9 +339,5 @@ pp_graphic |>
 ```{r}
 str(per_pupil_all)
 ```
-#map with the accountability index, you click on a town and you see comparision bar graphs with accountability index, graduation rate, per pupil funding, maybe amount of students in poverty
-
-
->>>>>>> 56d6ff4aee52105fbf63cf08637896155c4b8e2b
 
 
