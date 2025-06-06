@@ -5,8 +5,14 @@ date: "2025-04-22"
 ---
 
 Students in Connecticut are failing. In 2022, one in three students were at risk of not graduating high school, and chronic absenteeism rates are currently at some of the highest levels the state has seen. Despite this, local, state and federal government are spending more money per-student on the education system than they ever have. Spending in Connecticut hit $19,734 per-student in the 2021 to 2022 school year sitting over $1,000 higher than the national average of $18,614 per student. (https://nces.ed.gov/fastfacts/display.asp?id=66#)
+https://www.census.gov/library/stories/2024/04/public-school-spending.html 
 
 The state has coined this as the Disconnected Youth Crisis, with consequences that lead to young people not entering the job market or pursuing higher education after either dropping out or graduating. The state created a method of looking at the overall performance of their schools called the Next Generation Accountability System which is based off of 12 broad factor indicators of student performance. Each school has a point maximum based on the opportunities and level of school (ex elementary schools have lower maximum points because they don't have graduation rates). In this data is the accountability index, or the percentage of the total number of possible points a school was able to get based on their ELA, math and science test scores, split up by overall test performance as well as the performance index for high-needs students. Other factors are also taken into consideration, but these are the main ones. However, despite heightened spending in the state on students, the accountability index state-wide has been increasing dramatically.
+
+<iframe title="Education funding jumps, student performance plummets" aria-label="Interactive line chart" id="datawrapper-chart-LvnAi" src="https://datawrapper.dwcdn.net/LvnAi/2/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="441" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();</script>
+
+<iframe title="[ Insert title here ]" aria-label="Interactive line chart" id="datawrapper-chart-oGIL8" src="https://datawrapper.dwcdn.net/oGIL8/2/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="323" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
+</script>
 
 This story is extremely timely because this issue has been brought to light in the past two years. A report was published in October of 2023 detailing the failures of the state, and this report has sparked the introduction of legislation into the Connecticut Senate. The legislation proposed an increase in funding for at-risk students and better data collection methods and data collaboration.
 
@@ -80,8 +86,14 @@ per_pupil_all <- per_pupil_all|> rename(
   reporting_district_code = district_code,
 )
 
-#statewide per pupil funding 
-pp_statewide <- read.csv("../data/per_pupil_state2.csv")|>
+#statewide per pupil funding
+pp_statewide <- read.csv("../data/per_pupil_state3.csv")|>
+  clean_names()
+
+#nationwide per pupil funding
+#https://www.census.gov/data/tables/2023/econ/school-finances/secondary-education-finance.html
+
+pp_nation <- read.csv("../data/pp_nation.csv")|>
   clean_names()
 
 #graduation rate
@@ -196,6 +208,16 @@ next_gen_state <- next_gen |>
 ```{r}
 pp_statewide <- pp_statewide |>
   mutate(fall_of_year = str_sub(year, 1, 4) %>% as.numeric())
+
+next_gen_state1 <- next_gen_state |>
+    select(fall_of_year, accountability_index)
+
+write_csv(next_gen_state1, "next_gen_state1.csv")
+
+pp_statewide1 <- pp_statewide |>
+  select(fall_of_year, ppe_numeric)
+
+write_csv(pp_statewide1, "pp_statewide1.csv")
 ```
 
 
@@ -229,11 +251,11 @@ ggplot(pp_statewide, aes(x = fall_of_year, y = ppe_numeric)) +
 ```
 ```{r}
 double_axis <- left_join(pp_statewide, next_gen_state, by = "fall_of_year")
+
 ```
 
 ```{r}
 #double plot, however i have no idea how to have 2021 and 2022 show up on here for the accountability index so i am still working on it but these both are quite low as well. there is no data for 2019 and 2020 
-
 ggplot(double_axis, aes(x = fall_of_year)) +
   geom_point(aes(y = ppe_numeric), color = "red", size = 2) +
   geom_line(aes(y = ppe_numeric), color = "red", size = .5) +
