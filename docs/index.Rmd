@@ -4,8 +4,7 @@ output: html_document
 date: "2025-04-22"
 ---
 
-Students in Connecticut are failing. In 2022, one in three students were at risk of not graduating high school, and chronic absenteeism rates are currently at some of the highest levels the state has seen. Despite this, local, state and federal government are spending more money per-student on the education system than they ever have. Spending in Connecticut hit $19,734 per-student in the 2021 to 2022 school year sitting over $1,000 higher than the national average of $18,614 per student. (https://nces.ed.gov/fastfacts/display.asp?id=66#)
-https://www.census.gov/library/stories/2024/04/public-school-spending.html 
+Students in Connecticut are failing. In 2022, one in three students were at risk of not graduating high school, and chronic absenteeism rates are currently at some of the highest levels the state has seen. Despite this, local, state and federal government are spending more money per-student on the education system than they ever have. Spending in Connecticut hit over $21,000 per-student in the 2022 fiscal year sitting significatly higher than the national average of around $15,600 per student. (https://www.census.gov/library/stories/2024/04/public-school-spending.html)
 
 The state has coined this as the Disconnected Youth Crisis, with consequences that lead to young people not entering the job market or pursuing higher education after either dropping out or graduating. The state created a method of looking at the overall performance of their schools called the Next Generation Accountability System which is based off of 12 broad factor indicators of student performance. Each school has a point maximum based on the opportunities and level of school (ex elementary schools have lower maximum points because they don't have graduation rates). In this data is the accountability index, or the percentage of the total number of possible points a school was able to get based on their ELA, math and science test scores, split up by overall test performance as well as the performance index for high-needs students. Other factors are also taken into consideration, but these are the main ones. However, despite heightened spending in the state on students, the accountability index state-wide has been increasing dramatically.
 
@@ -13,6 +12,8 @@ The state has coined this as the Disconnected Youth Crisis, with consequences th
 
 <iframe title="[ Insert title here ]" aria-label="Interactive line chart" id="datawrapper-chart-oGIL8" src="https://datawrapper.dwcdn.net/oGIL8/2/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="323" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
 </script>
+
+But how does this compare nationally? 
 
 This story is extremely timely because this issue has been brought to light in the past two years. A report was published in October of 2023 detailing the failures of the state, and this report has sparked the introduction of legislation into the Connecticut Senate. The legislation proposed an increase in funding for at-risk students and better data collection methods and data collaboration.
 
@@ -95,6 +96,12 @@ pp_statewide <- read.csv("../data/per_pupil_state3.csv")|>
 
 pp_nation <- read.csv("../data/pp_nation.csv")|>
   clean_names()
+
+#cleaning
+pp_nation <- pp_nation |>
+  mutate(x = str_remove(x, "\\.+$"))
+
+write_csv(pp_nation, "pp_nation.csv")
 
 #graduation rate
 graduation_rate_state<- read.csv("../data/state_graduation.csv")|>

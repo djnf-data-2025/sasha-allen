@@ -360,9 +360,9 @@ were at risk of not graduating high school, and chronic absenteeism
 rates are currently at some of the highest levels the state has seen.
 Despite this, local, state and federal government are spending more
 money per-student on the education system than they ever have. Spending
-in Connecticut hit $19,734 per-student in the 2021 to 2022 school year
-sitting over $1,000 higher than the national average of $18,614 per
-student. (<a href="https://nces.ed.gov/fastfacts/display.asp?id=66#" class="uri">https://nces.ed.gov/fastfacts/display.asp?id=66#</a>) <a href="https://www.census.gov/library/stories/2024/04/public-school-spending.html" class="uri">https://www.census.gov/library/stories/2024/04/public-school-spending.html</a></p>
+in Connecticut hit over $21,000 per-student in the 2022 fiscal year
+sitting significatly higher than the national average of around $15,600
+per student. (<a href="https://www.census.gov/library/stories/2024/04/public-school-spending.html" class="uri">https://www.census.gov/library/stories/2024/04/public-school-spending.html</a>)</p>
 <p>The state has coined this as the Disconnected Youth Crisis, with
 consequences that lead to young people not entering the job market or
 pursuing higher education after either dropping out or graduating. The
@@ -386,6 +386,7 @@ dramatically.</p>
 </iframe>
 <script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
 </script>
+<p>But how does this compare nationally?</p>
 <p>This story is extremely timely because this issue has been brought to
 light in the past two years. A report was published in October of 2023
 detailing the failures of the state, and this report has sparked the
@@ -519,6 +520,12 @@ pp_statewide &lt;- read.csv(&quot;../data/per_pupil_state3.csv&quot;)|&gt;
 
 pp_nation &lt;- read.csv(&quot;../data/pp_nation.csv&quot;)|&gt;
   clean_names()
+
+#cleaning
+pp_nation &lt;- pp_nation |&gt;
+  mutate(x = str_remove(x, &quot;\\.+$&quot;))
+
+write_csv(pp_nation, &quot;pp_nation.csv&quot;)
 
 #graduation rate
 graduation_rate_state&lt;- read.csv(&quot;../data/state_graduation.csv&quot;)|&gt;
