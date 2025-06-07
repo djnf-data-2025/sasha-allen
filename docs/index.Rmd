@@ -59,7 +59,7 @@ This story is extremely timely because this issue has been brought to light in t
 
 The target audience for this story is anyone in Connecticut who is in the school system or knows anyone involved in the school system including parents, teachers, students, family members and friends of students. This way, they can be more informed on what the state is trying to do as well as the contributing factors to the crisis.
 
-## Highly effected districts
+## Highly affected districts
 
 <iframe title="Worst performing school districts in 2021" aria-label="Table" id="datawrapper-chart-NRdeZ" src="https://datawrapper.dwcdn.net/NRdeZ/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="769" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
 </script>
@@ -222,8 +222,8 @@ per_pupil_all <- left_join(per_pupil_all, zips_ct_selected, by = "reporting_dist
 
 ```
 
-```{r}
 #finding the districts with the highest accountability index so i can make graphics from that
+```{r message = FALSE, warning = FALSE, results='hide'}
 next_gen_pct |>
   filter(fall_of_year == 2022)|>
   arrange(accountability_index)|>
@@ -265,14 +265,14 @@ write_csv(joined_data, "joined_data.csv")
 ```
 
 
-```{r}
+```{r message = FALSE, warning = FALSE, results='hide'}
 #this is per-pupil funding stats that combine local, fed and state funding split down by zipcode, just for the 2021 to 2022 school year. 
 pp_21_22 |>
   arrange(total) |>
   select(total, zipcode, district)
 ```
 
-```{r}
+```{r message = FALSE, warning = FALSE, results='hide'}
 #finding districts and zip codes with the highest dropout rates (this is hard because there is not data for all districts)
 dropout_rate |>
   arrange(desc(x2021_22)) |>
@@ -280,7 +280,7 @@ dropout_rate |>
 ```
 
 
-```{r}
+```{r message = FALSE, warning = FALSE, results='hide'}
 graduation_rate |>
   arrange(x2021_22) |>
   select(x2021_22, zipcode, district)
@@ -338,7 +338,6 @@ ggplot(pp_statewide, aes(x = fall_of_year, y = ppe_numeric)) +
 ```
 ```{r}
 double_axis <- left_join(pp_statewide, next_gen_state, by = "fall_of_year")
-
 ```
 
 ```{r}
@@ -377,7 +376,7 @@ scale_x_continuous(
     )
 ```
 
-```{r}
+```{r message = FALSE, warning = FALSE, results='hide'}
 zip_percentage_graphic <- zip_percentage |>
   filter(fall_of_year == "2022")
 
