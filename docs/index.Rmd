@@ -60,6 +60,7 @@ This story is extremely timely because this issue has been brought to light in t
 The target audience for this story is anyone in Connecticut who is in the school system or knows anyone involved in the school system including parents, teachers, students, family members and friends of students. This way, they can be more informed on what the state is trying to do as well as the contributing factors to the crisis.
 
 ## Highly affected districts
+Bridegport, Waterbury, Hartford and New Haven have some of the highest rates of poverty in the state.
 
 <iframe title="Worst performing school districts in 2021" aria-label="Table" id="datawrapper-chart-NRdeZ" src="https://datawrapper.dwcdn.net/NRdeZ/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="769" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
 </script>
