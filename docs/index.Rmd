@@ -60,7 +60,7 @@ This story is extremely timely because this issue has been brought to light in t
 The target audience for this story is anyone in Connecticut who is in the school system or knows anyone involved in the school system including parents, teachers, students, family members and friends of students. This way, they can be more informed on what the state is trying to do as well as the contributing factors to the crisis.
 
 ## Highly affected districts
-Bridegport, Waterbury, Hartford and New Haven have some of the highest rates of poverty in the state.
+Bridegport, Waterbury, Hartford and New Haven have some of the highest rates of poverty in the state. They were also among the ten districts with more than 1,000 students performing at the lowest levels in the state.
 
 <iframe title="Worst performing school districts in 2021" aria-label="Table" id="datawrapper-chart-NRdeZ" src="https://datawrapper.dwcdn.net/NRdeZ/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="769" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
 </script>
@@ -71,6 +71,10 @@ Bridegport, Waterbury, Hartford and New Haven have some of the highest rates of 
 - Donna Hamzy, helped craft the Young People's Plan, which is a ten year plan for funding to help the crisis. 
 - State Department of Education Commissioner Charlene Russell-Tucker
 - Someone who testified during the legislative hearings could be a good place to start finding people closely connected to the issue, preferably a student who has experienced disconnection in the school system. (<https://www.cga.ct.gov/aspx/CGADisplayTestimonies/CGADisplayTestimony.aspx?bill=SB-01511&doc_year=2025>)
+
+## Going forward
+
+I would like to compare the median household income or the poverty rates in each district to the accountability index. I could also take a more micro look at test scores and the factors going into the accountability index.
 
 This could possibly impact the funding for education, although it seems like there is already some initiative to change policy. Hopefully from this more nonprofits will be able to help supplement in high need areas from this as well.
 
