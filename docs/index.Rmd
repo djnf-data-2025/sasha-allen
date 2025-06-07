@@ -1,65 +1,81 @@
 ---
 title: "In Connecticut schools spending is up, but students are still struggling"
-output: html_document
-theme: readable
+output:
+  html_document:
+    theme: cosmo
 
 ---
-Sasha Allen
-allensasha622@gmail.com | 443-386-7386
-
-<br>
+Sasha Allen | allensasha622@gmail.com | 443-386-7386 
+<br>June 7, 2025</br>
 
 <p align="center">
-  <img src="kid.png" alt="Student Photo">
+  <img src="raising.png" alt="Student Photo" style="width: 1000px; height: auto;">
 </p>
-<br>
+<br></br>
+In 2022, one in three students were at risk of dropping of dropping out, and chronic absenteeism continues to be an issue. Despite this, Connecticut has increased spending on education over the past decade. 
+
+## So, what's going on in Connecticut schools?
+
+The state is undergoing what they call the Disconnected Youth Crisis. Students are struggling in multiple aspects of school, and these struggles have long-term consequences. As a result, young people are not entering the job market or pursuing higher education after either dropping out or graduating. 
+
+The state created a method of looking at the overall performance of their schools called the Next Generation Accountability System which is based off of 12 broad factor indicators of student performance:
+
+- Academic achievement status measured by state assessments
+- Academic growth
+- Assessment participation rate
+- Chronic absenteeism
+- Postsecondary preparation - coursework
+- Postsecondary readiness – exams and college credit
+- Graduation – on track in ninth grade
+- Graduation – four-year adjusted cohort graduation rate – all students
+- Graduation – six-year adjusted cohort graduation rate – high needs
+- Postsecondary entrance rate – all students (college enrollment)
+- Physical fitness
+- Arts access
+
+Each school has a point maximum based on the opportunities and level of school, and is given a score and an accountability index, or the percent of the total maximum points earned, to gauge what level a school or district is at. 
+
+<iframe title="Where are students struggling the most?" aria-label="Map" id="datawrapper-chart-big1o" src="https://datawrapper.dwcdn.net/big1o/8/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="603" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
+</script>
 
 ### Chronic absenteeism levels continue to rise as student test scores fall.
-Students in Connecticut are failing. In 2022, one in three students were at risk of not graduating high school according to a report released in October of 2023, and chronic absenteeism rates are currently at some of the highest levels the state has seen. Despite this, local, state and federal government are spending more money per-student on the education system than they ever have. 
+Connecticut has increased spending on education over the past decade. Despite this, students in the state are not performing well. In 2022, one in three students were at risk of not graduating high school according to a report released in October of 2023. 
 
-### What's going on in Connecticut schools?
+<div style="max-width: 700px; margin: 0 auto;"><iframe title="Education funding jumps, student performance plummets" aria-label="Interactive line chart" id="datawrapper-chart-LvnAi" src="https://datawrapper.dwcdn.net/LvnAi/2/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="441" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();</script></div>
 
-The state has coined this as the Disconnected Youth Crisis, with consequences that lead to young people not entering the job market or pursuing higher education after either dropping out or graduating. The state created a method of looking at the overall performance of their schools called the Next Generation Accountability System which is based off of 12 broad factor indicators of student performance. Each school has a point maximum based on the opportunities and level of school (ex elementary schools have lower maximum points because they don't have graduation rates). In this data is the accountability index, or the percentage of the total number of possible points a school was able to get based on their ELA, math and science test scores, split up by overall test performance as well as the performance index for high-needs students. Other factors are also taken into consideration, but these are the main ones. However, despite heightened spending in the state on students, the accountability index state-wide has been increasing dramatically.
+<div style="max-width: 700px; margin: 0 auto;"><iframe title="[ Insert title here ]" aria-label="Interactive line chart" id="datawrapper-chart-oGIL8" src="https://datawrapper.dwcdn.net/oGIL8/2/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="323" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
+</script></div>
 
-<div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-  
-  <div style="flex: 1 1 45%; max-width: 500px;"> <iframe title="Education funding jumps, student performance plummets" aria-label="Interactive line chart" id="datawrapper-chart-LvnAi" src="https://datawrapper.dwcdn.net/LvnAi/2/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="441" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();</script></div>
+### How does this compare nationally?
 
-<div style="flex: 1 1 45%; max-width: 500px;"><iframe title="[ Insert title here ]" aria-label="Interactive line chart" id="datawrapper-chart-oGIL8" src="https://datawrapper.dwcdn.net/oGIL8/2/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="323" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
+Connecticut spends more on education than most states across the nation. But how much exactly are they spending, and what is the national average for per-pupil spending on education?
+
+<iframe title="Where are students struggling the most?" aria-label="Map" id="datawrapper-chart-big1o" src="https://datawrapper.dwcdn.net/big1o/8/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="603" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
 </script>
- </div>
 
-</div>
-
-
-
-
-##How does this compare nationally?
-
-Per-pupil spending on education varri
-
-<iframe title="Per-pupil funding across the U.S. in FY 2023" aria-label="Map" id="datawrapper-chart-fqLP2" src="https://datawrapper.dwcdn.net/fqLP2/2/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="507" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
-</script>
+## State actions 
 
 This story is extremely timely because this issue has been brought to light in the past two years. A report was published in October of 2023 detailing the failures of the state, and this report has sparked the introduction of legislation into the Connecticut Senate. The legislation proposed an increase in funding for at-risk students and better data collection methods and data collaboration.
 
 The target audience for this story is anyone in Connecticut who is in the school system or knows anyone involved in the school system including parents, teachers, students, family members and friends of students. This way, they can be more informed on what the state is trying to do as well as the contributing factors to the crisis.
 
-People to interview are: Rep. Anthony L. Nolan, he introduced a bill to increase education funding. Donna Hamzy, helped craft the Young People's Plan, which is a ten year plan for funding to help the crisis. Someone who testified during the legislative hearings could be a good place to start finding people closely connected to the issue, preferably a student who has experienced disconnection in the school system. (<https://www.cga.ct.gov/aspx/CGADisplayTestimonies/CGADisplayTestimony.aspx?bill=SB-01511&doc_year=2025>)
+## Highly effected districts
+
+<iframe title="Worst performing school districts in 2021" aria-label="Table" id="datawrapper-chart-NRdeZ" src="https://datawrapper.dwcdn.net/NRdeZ/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="769" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
+</script>
+
+## People to interview 
+
+- Rep. Anthony L. Nolan,  introduced a bill to increase education funding. 
+- Donna Hamzy, helped craft the Young People's Plan, which is a ten year plan for funding to help the crisis. 
+- State Department of Education Commissioner Charlene Russell-Tucker
+- Someone who testified during the legislative hearings could be a good place to start finding people closely connected to the issue, preferably a student who has experienced disconnection in the school system. (<https://www.cga.ct.gov/aspx/CGADisplayTestimonies/CGADisplayTestimony.aspx?bill=SB-01511&doc_year=2025>)
 
 This could possibly impact the funding for education, although it seems like there is already some initiative to change policy. Hopefully from this more nonprofits will be able to help supplement in high need areas from this as well.
 
 I was mainly interested in this story because I had never heard of the disconnected youth crisis before and for a rich state known for having a fairly good education system, and wondered why so many students were at risk of dropping out. I think it will be impactful to see who this actually is effecting the most, and what types of supports are offered in these areas.
-
-Photo and graphics: I have my double-axis graph comparing state per-pupil funding and , but I also want to create an interactive choropleth map based on the accountability index where you click on a town and are able to see the graduation rate, per-pupil funding and accountability index compared directly to the state averages. 
-  (I am not sure if this is too ambitious. If it is, I could dumb it down and and just include these other statistics on the details of each town. The comparison would be harder though.)
-
+ 
 Estimated delivery is beginning of July.
-
-As for what I still need to do, I am hoping to make some more progress with my map. The district map I am using in datawrapper does has some gaps in the template so I am hoping to refine the data and use towns. I also want to recreate my double axis graph in datawrapper or flourish for a bit of visual consistency.
-
-<iframe title="Where are students struggling the most?" aria-label="Map" id="datawrapper-chart-big1o" src="https://datawrapper.dwcdn.net/big1o/7/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="603" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
-</script>
 
 
 ```{r}
@@ -204,10 +220,6 @@ still_enrolled <- left_join(still_enrolled, zips_ct_selected, by = "reporting_di
 #add zips to the per-pupil funding dataset
 per_pupil_all <- left_join(per_pupil_all, zips_ct_selected, by = "reporting_district_code")
 
-#counties with the highest rates of disconnected youth
-#zip_pct_peryear <- zip_percentage |>
- # summarise(yearly_pct_avg = sum()
- # )
 ```
 
 ```{r}
@@ -216,6 +228,40 @@ next_gen_pct |>
   filter(fall_of_year == 2022)|>
   arrange(accountability_index)|>
   select(rptng_district_name, accountability_index)
+```
+```{r}
+#joining the datasets so that i can create a table of the worst performing districts to compare funding and graduation rate
+districts <- c(
+  "Norwich School District",
+  "Sprague School District",
+  "Sterling School District",
+  "New Britain School District",
+  "Bridgeport School District",
+  "New London School District",
+  "Hartford School District",
+  "New Haven School District",
+  "Hampton School District",
+  "Waterbury School District"
+)
+
+filtered_next_gen_pct <- next_gen_pct |>
+  filter(fall_of_year == 2021, rptng_district_name %in% districts)
+
+filtered_graduation_rate <- graduation_rate |>
+  filter(district %in% districts)
+
+filtered_per_pupil_all <- per_pupil_all |>
+  filter(year == "21-22", district %in% districts)
+
+# Join all three datasets
+joined_data <- filtered_per_pupil_all |>
+  left_join(filtered_graduation_rate |> select(district, x2021_22), by = "district") |>
+  left_join(
+    filtered_next_gen_pct |> rename(district = rptng_district_name),
+    by = "district"
+  )
+
+write_csv(joined_data, "joined_data.csv")
 ```
 
 
@@ -330,41 +376,8 @@ scale_x_continuous(
     plot.title = element_text(margin = margin(b=15))
     )
 ```
-```{r}
-graduation_rate_long <- graduation_rate_state |> 
-  pivot_longer(
-    cols = starts_with("x"),       # or: cols = -district
-    names_to = "school_year", 
-    values_to = "grad_rate"
-  )
-
-```
-
-
-#i have a bunch of notes and stuff down here this section is my brainstorming 
-```{r}
-#grad rate
-#ggplot(graduation_rate_state, aes(x = school_year, y = grad_rate)) +
-  #geom_line(color = "blue", size = .5) +
-  #ylim(14000, 20000) +
-  #geom_point(color = "darkblue", size = 1) +  # optional points
-  #labs(
-   # title = "Connecticut Graduation Rate",
-   # x = "Fall of school year",
-   # y = "Graduation Rate"
- # ) +
-  #theme_minimal()
-```
-```{r}
-per_pupil_parsed <- per_pupil_all |>
-  mutate(total = parse_number(total))
-```
 
 ```{r}
-#im going to use this to find the towns with the lowest and highest accountability index in 2022 and to make a map. i am going to create a double bar chart comparing average per pupil funding for 2022 in each town with this accountability index for 2022
-
-#accountability index filter and averaging (average of districts in each town, i think town may be more readable in a graphic)
-
 zip_percentage_graphic <- zip_percentage |>
   filter(fall_of_year == "2022")
 
@@ -397,10 +410,6 @@ pp_graphic |>
 
 
 
-```
-
-```{r}
-str(per_pupil_all)
 ```
 
 
