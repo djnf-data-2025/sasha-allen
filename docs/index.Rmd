@@ -4,7 +4,7 @@ output: html_document
 date: "2025-04-22"
 ---
 
-Students in Connecticut are failing. In 2022, one in three students were at risk of not graduating high school, and chronic absenteeism rates are currently at some of the highest levels the state has seen. Despite this, local, state and federal government are spending more money per-student on the education system than they ever have. Spending in Connecticut hit over $21,000 per-student in the 2022 fiscal year sitting significatly higher than the national average of around $15,600 per student. (https://www.census.gov/library/stories/2024/04/public-school-spending.html)
+Students in Connecticut are failing. In 2022, one in three students were at risk of not graduating high school, and chronic absenteeism rates are currently at some of the highest levels the state has seen. Despite this, local, state and federal government are spending more money per-student on the education system than they ever have. Spending in Connecticut hit over $21,000 per-student in the 2022 fiscal year sitting significatly higher than the national average of around $15,600 per student. (https://www.census.gov/library/stories/2024/04/public-school-spending.html
 
 The state has coined this as the Disconnected Youth Crisis, with consequences that lead to young people not entering the job market or pursuing higher education after either dropping out or graduating. The state created a method of looking at the overall performance of their schools called the Next Generation Accountability System which is based off of 12 broad factor indicators of student performance. Each school has a point maximum based on the opportunities and level of school (ex elementary schools have lower maximum points because they don't have graduation rates). In this data is the accountability index, or the percentage of the total number of possible points a school was able to get based on their ELA, math and science test scores, split up by overall test performance as well as the performance index for high-needs students. Other factors are also taken into consideration, but these are the main ones. However, despite heightened spending in the state on students, the accountability index state-wide has been increasing dramatically.
 
@@ -14,6 +14,9 @@ The state has coined this as the Disconnected Youth Crisis, with consequences th
 </script>
 
 But how does this compare nationally? 
+
+<iframe title="Per-pupil funding across the U.S. in FY 2023" aria-label="Map" id="datawrapper-chart-fqLP2" src="https://datawrapper.dwcdn.net/fqLP2/2/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="507" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
+</script>
 
 This story is extremely timely because this issue has been brought to light in the past two years. A report was published in October of 2023 detailing the failures of the state, and this report has sparked the introduction of legislation into the Connecticut Senate. The legislation proposed an increase in funding for at-risk students and better data collection methods and data collaboration.
 
@@ -32,7 +35,7 @@ Estimated delivery is beginning of July.
 
 As for what I still need to do, I am hoping to make some more progress with my map. The district map I am using in datawrapper does has some gaps in the template so I am hoping to refine the data and use towns. I also want to recreate my double axis graph in datawrapper or flourish for a bit of visual consistency.
 
-<iframe title="Where are students struggling the most?" aria-label="Map" id="datawrapper-chart-big1o" src="https://datawrapper.dwcdn.net/big1o/3/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="400" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
+<iframe title="Where are students struggling the most?" aria-label="Map" id="datawrapper-chart-big1o" src="https://datawrapper.dwcdn.net/big1o/7/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="603" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
 </script>
 
 
@@ -182,6 +185,14 @@ per_pupil_all <- left_join(per_pupil_all, zips_ct_selected, by = "reporting_dist
 #zip_pct_peryear <- zip_percentage |>
  # summarise(yearly_pct_avg = sum()
  # )
+```
+
+```{r}
+#finding the districts with the highest accountability index so i can make graphics from that
+next_gen_pct |>
+  filter(fall_of_year == 2022)|>
+  arrange(accountability_index)|>
+  select(rptng_district_name, accountability_index)
 ```
 
 

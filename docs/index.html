@@ -362,7 +362,7 @@ Despite this, local, state and federal government are spending more
 money per-student on the education system than they ever have. Spending
 in Connecticut hit over $21,000 per-student in the 2022 fiscal year
 sitting significatly higher than the national average of around $15,600
-per student. (<a href="https://www.census.gov/library/stories/2024/04/public-school-spending.html" class="uri">https://www.census.gov/library/stories/2024/04/public-school-spending.html</a>)</p>
+per student. (<a href="https://www.census.gov/library/stories/2024/04/public-school-spending.html" class="uri">https://www.census.gov/library/stories/2024/04/public-school-spending.html</a></p>
 <p>The state has coined this as the Disconnected Youth Crisis, with
 consequences that lead to young people not entering the job market or
 pursuing higher education after either dropping out or graduating. The
@@ -387,6 +387,10 @@ dramatically.</p>
 <script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
 </script>
 <p>But how does this compare nationally?</p>
+<iframe title="Per-pupil funding across the U.S. in FY 2023" aria-label="Map" id="datawrapper-chart-fqLP2" src="https://datawrapper.dwcdn.net/fqLP2/2/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="507" data-external="1">
+</iframe>
+<script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
+</script>
 <p>This story is extremely timely because this issue has been brought to
 light in the past two years. A report was published in October of 2023
 detailing the failures of the state, and this report has sparked the
@@ -428,7 +432,7 @@ progress with my map. The district map I am using in datawrapper does
 has some gaps in the template so I am hoping to refine the data and use
 towns. I also want to recreate my double axis graph in datawrapper or
 flourish for a bit of visual consistency.</p>
-<iframe title="Where are students struggling the most?" aria-label="Map" id="datawrapper-chart-big1o" src="https://datawrapper.dwcdn.net/big1o/3/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="400" data-external="1">
+<iframe title="Where are students struggling the most?" aria-label="Map" id="datawrapper-chart-big1o" src="https://datawrapper.dwcdn.net/big1o/7/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="603" data-external="1">
 </iframe>
 <script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
 </script>
@@ -599,6 +603,413 @@ per_pupil_all &lt;- left_join(per_pupil_all, zips_ct_selected, by = &quot;report
 #zip_pct_peryear &lt;- zip_percentage |&gt;
  # summarise(yearly_pct_avg = sum()
  # )</code></pre>
+<pre class="r"><code>#finding the districts with the highest accountability index so i can make graphics from that
+next_gen_pct |&gt;
+  filter(fall_of_year == 2022)|&gt;
+  arrange(accountability_index)|&gt;
+  select(rptng_district_name, accountability_index)</code></pre>
+<pre><code>##                                                    rptng_district_name
+## 1                                           Unified School District #1
+## 2                                           Unified School District #2
+## 3                                                            EdAdvance
+## 4                                Area Cooperative Educational Services
+## 5                                              Norfolk School District
+## 6                                    Highville Charter School District
+## 7                           New Beginnings Inc Family Academy District
+## 8                                     Cooperative Educational Services
+## 9                                              Jumoke Academy District
+## 10                                             Norwich School District
+## 11                                             Sprague School District
+## 12                                  Great Oaks Charter School District
+## 13                                               Explorations District
+## 14                                            Sterling School District
+## 15                                         New Britain School District
+## 16                                          Bridgeport School District
+## 17                                          New London School District
+## 18                                            Hartford School District
+## 19                                          Winchester School District
+## 20                                  Brass City Charter School District
+## 21                                           New Haven School District
+## 22  Eastern Connecticut Regional Educational Service Center (EASTCONN)
+## 23                                  Common Ground High School District
+## 24                                             Hampton School District
+## 25                                           Waterbury School District
+## 26                         Achievement First Hartford Academy District
+## 27                               Booker T. Washington Academy District
+## 28                      Goodwin University Educational Services (GUES)
+## 29                                          Manchester School District
+## 30                                             Windham School District
+## 31                   Connecticut Technical Education and Career System
+## 32                                         The Gilbert School District
+## 33                                               Derby School District
+## 34                                       Norwich Free Academy District
+## 35                                               Salem School District
+## 36                                             Ansonia School District
+## 37                                            Brooklyn School District
+## 38                                 Elm City Montessori School District
+## 39                                             Ashford School District
+## 40                                            Scotland School District
+## 41                                               Union School District
+## 42                        Elm City College Preparatory School District
+## 43                                         The Bridge Academy District
+## 44                                         Regional School District 11
+## 45                                    Capitol Region Education Council
+## 46                                           Killingly School District
+## 47                                            Thompson School District
+## 48                                            Stamford School District
+## 49                                           Naugatuck School District
+## 50                                              Putnam School District
+## 51                                          Middletown School District
+## 52                                        East Windsor School District
+## 53                                            Amistad Academy District
+## 54                     Interdistrict School for Arts and Comm District
+## 55                                           Stratford School District
+## 56                                          Deep River School District
+## 57                                          Torrington School District
+## 58                                              Hamden School District
+## 59                                             Meriden School District
+## 60                                          East Haven School District
+## 61                                       East Hartford School District
+## 62                                            Columbia School District
+## 63                                             Danbury School District
+## 64                                          Bloomfield School District
+## 65                       Achievement First Bridgeport Academy District
+## 66                                          West Haven School District
+## 67                                         Regional School District 04
+## 68                                          Willington School District
+## 69                                         New Milford School District
+## 70                                             Sherman School District
+## 71                                             Windsor School District
+## 72                                             Enfield School District
+## 73                              Integrated Day Charter School District
+## 74                                                               Learn
+## 75                                         Regional School District 01
+## 76                                              Groton School District
+## 77                                         Wallingford School District
+## 78                                            Plymouth School District
+## 79                          Capital Preparatory Harbor School District
+## 80                                          Plainfield School District
+## 81                                           Voluntown School District
+## 82                                           Mansfield School District
+## 83                                              Canaan School District
+## 84                                             Chaplin School District
+## 85                                       Windsor Locks School District
+## 86                                             Norwalk School District
+## 87                                         Regional School District 08
+## 88                                             Ledyard School District
+## 89                                             Bristol School District
+## 90                                        New Hartford School District
+## 91                                             Chester School District
+## 92                              Park City Prep Charter School District
+## 93                                             Andover School District
+## 94                                            Griswold School District
+## 95                                              Sharon School District
+## 96                                               Essex School District
+## 97                                           Salisbury School District
+## 98                                           Montville School District
+## 99                                           Watertown School District
+## 100                               Side By Side Charter School District
+## 101                                             Vernon School District
+## 102                                           Franklin School District
+## 103                                           Stafford School District
+## 104                                            Lebanon School District
+## 105                                     The Woodstock Academy District
+## 106                                  Odyssey Community School District
+## 107                                        Barkhamsted School District
+## 108                                            Pomfret School District
+## 109                                          Waterford School District
+## 110                                        Southington School District
+## 111                                   North Stonington School District
+## 112                                          Woodstock School District
+## 113                                       North Canaan School District
+## 114                                            Shelton School District
+## 115                                            Milford School District
+## 116                                            Wolcott School District
+## 117                                            Preston School District
+## 118                                             Lisbon School District
+## 119                                           Branford School District
+## 120                                            Redding School District
+## 121                                      West Hartford School District
+## 122                                           Portland School District
+## 123                                               Kent School District
+## 124                                             Oxford School District
+## 125                                             Canton School District
+## 126                                        Marlborough School District
+## 127                                           Cromwell School District
+## 128                                        Regional School District 19
+## 129                                          Newington School District
+## 130                                            Clinton School District
+## 131                                            Seymour School District
+## 132                                        Regional School District 06
+## 133                                           Suffield School District
+## 134                                             Bolton School District
+## 135                                         Plainville School District
+## 136                                       Wethersfield School District
+## 137                                       East Hampton School District
+## 138                                             Orange School District
+## 139                                        East Haddam School District
+## 140                                          Thomaston School District
+## 141                    Stamford Charter School for Excellence District
+## 142                                         Canterbury School District
+## 143                                      New Fairfield School District
+## 144                                        Regional School District 15
+## 145                                         Colchester School District
+## 146                                           Cornwall School District
+## 147                                        Regional School District 12
+## 148                                       Old Saybrook School District
+## 149                                           Eastford School District
+## 150                                             Berlin School District
+## 151                                             Hebron School District
+## 152                                        North Haven School District
+## 153                                         Stonington School District
+## 154                                        East Granby School District
+## 155                                     North Branford School District
+## 156                                            Newtown School District
+## 157                                             Bethel School District
+## 158                                        Regional School District 07
+## 159                                           Coventry School District
+## 160                                        Regional School District 13
+## 161                                               Avon School District
+## 162                                             Easton School District
+## 163                                          Fairfield School District
+## 164                                        Regional School District 14
+## 165                                             Somers School District
+## 166                                             Bozrah School District
+## 167                                          Ellington School District
+## 168                                         Rocky Hill School District
+## 169                                         Brookfield School District
+## 170                                            Tolland School District
+## 171                                           Simsbury School District
+## 172                                        Regional School District 10
+## 173                                             Monroe School District
+## 174                                      South Windsor School District
+## 175                                        Regional School District 16
+## 176                                           Westport School District
+## 177                                          East Lyme School District
+## 178                                        Regional School District 17
+## 179                                        Regional School District 05
+## 180                                        Glastonbury School District
+## 181                                          Westbrook School District
+## 182                                             Granby School District
+## 183                                        Regional School District 18
+## 184                                         Woodbridge School District
+## 185                                            Bethany School District
+## 186                                           Guilford School District
+## 187                                          Greenwich School District
+## 188                                         Litchfield School District
+## 189                                         Ridgefield School District
+## 190                                           Cheshire School District
+## 191                                          Colebrook School District
+## 192                                         Farmington School District
+## 193                                             Wilton School District
+## 194                                           Trumbull School District
+## 195                                             Darien School District
+## 196                                        Regional School District 09
+## 197                                             Weston School District
+## 198                                           Hartland School District
+## 199                                         New Canaan School District
+## 200                                            Madison School District
+##     accountability_index
+## 1               14.30611
+## 2               33.67920
+## 3               37.48843
+## 4               41.93775
+## 5               47.64936
+## 6               47.77662
+## 7               48.41303
+## 8               49.95720
+## 9               50.32081
+## 10              50.74241
+## 11              51.55455
+## 12              54.45238
+## 13              54.53242
+## 14              55.53358
+## 15              56.01091
+## 16              56.66801
+## 17              57.13963
+## 18              57.15646
+## 19              57.42327
+## 20              57.45313
+## 21              57.57018
+## 22              57.68304
+## 23              58.73585
+## 24              58.99411
+## 25              59.17357
+## 26              59.39896
+## 27              59.83070
+## 28              60.23645
+## 29              60.62605
+## 30              60.71562
+## 31              61.00369
+## 32              61.08092
+## 33              61.62624
+## 34              61.74071
+## 35              62.23801
+## 36              62.53363
+## 37              62.75162
+## 38              62.75727
+## 39              62.82991
+## 40              62.92190
+## 41              62.94538
+## 42              63.20900
+## 43              63.35492
+## 44              63.95187
+## 45              63.99163
+## 46              64.07796
+## 47              64.42074
+## 48              64.66524
+## 49              64.70264
+## 50              64.81489
+## 51              64.90701
+## 52              65.15891
+## 53              65.40270
+## 54              65.51683
+## 55              65.94697
+## 56              65.99324
+## 57              66.11125
+## 58              66.15097
+## 59              66.36895
+## 60              66.39530
+## 61              66.40867
+## 62              66.52237
+## 63              66.53647
+## 64              66.70664
+## 65              66.77614
+## 66              66.81717
+## 67              66.94367
+## 68              67.04546
+## 69              67.08992
+## 70              67.41909
+## 71              67.53257
+## 72              67.65117
+## 73              67.67302
+## 74              67.76310
+## 75              67.84268
+## 76              67.85759
+## 77              68.13128
+## 78              68.15304
+## 79              68.44143
+## 80              68.55080
+## 81              68.60531
+## 82              68.65487
+## 83              68.94092
+## 84              69.33396
+## 85              69.36574
+## 86              69.40292
+## 87              70.10949
+## 88              70.15216
+## 89              70.27949
+## 90              70.29588
+## 91              70.52858
+## 92              71.01760
+## 93              71.18263
+## 94              71.29446
+## 95              71.70470
+## 96              71.77511
+## 97              72.30698
+## 98              72.35388
+## 99              72.35402
+## 100             72.43936
+## 101             72.44345
+## 102             72.51008
+## 103             72.55463
+## 104             72.59368
+## 105             72.63492
+## 106             72.69656
+## 107             72.85206
+## 108             73.11863
+## 109             73.23277
+## 110             73.24128
+## 111             73.34480
+## 112             73.40781
+## 113             73.56234
+## 114             73.64502
+## 115             73.64601
+## 116             73.70466
+## 117             73.76764
+## 118             73.86747
+## 119             73.91961
+## 120             74.14836
+## 121             74.20961
+## 122             74.37968
+## 123             74.46125
+## 124             74.52856
+## 125             74.65218
+## 126             74.68254
+## 127             74.75184
+## 128             74.78559
+## 129             75.02812
+## 130             75.22252
+## 131             75.23495
+## 132             75.32849
+## 133             75.38026
+## 134             75.48337
+## 135             75.54829
+## 136             75.59059
+## 137             75.69718
+## 138             75.84533
+## 139             75.98110
+## 140             76.06053
+## 141             76.17520
+## 142             76.42148
+## 143             76.63788
+## 144             76.82892
+## 145             76.94362
+## 146             76.97322
+## 147             77.30473
+## 148             77.40008
+## 149             77.47571
+## 150             77.49053
+## 151             77.60651
+## 152             77.77193
+## 153             77.77376
+## 154             77.81976
+## 155             77.83801
+## 156             78.09838
+## 157             78.34545
+## 158             78.51524
+## 159             78.89450
+## 160             78.92297
+## 161             78.95116
+## 162             79.02414
+## 163             79.26199
+## 164             79.65887
+## 165             79.70273
+## 166             79.76798
+## 167             80.04453
+## 168             80.18419
+## 169             80.29369
+## 170             80.32932
+## 171             80.39838
+## 172             80.39932
+## 173             80.47773
+## 174             80.50288
+## 175             80.68079
+## 176             80.71290
+## 177             80.75097
+## 178             80.96636
+## 179             81.14685
+## 180             81.20477
+## 181             81.51251
+## 182             81.62055
+## 183             81.69226
+## 184             82.15595
+## 185             82.36033
+## 186             82.41020
+## 187             82.46978
+## 188             82.50768
+## 189             82.65298
+## 190             82.80718
+## 191             83.51219
+## 192             84.48737
+## 193             85.09929
+## 194             85.17244
+## 195             85.49602
+## 196             85.64613
+## 197             85.74893
+## 198             86.42420
+## 199             86.90177
+## 200             86.96184</code></pre>
 <pre class="r"><code>#this is per-pupil funding stats that combine local, fed and state funding split down by zipcode, just for the 2021 to 2022 school year. 
 pp_21_22 |&gt;
   arrange(total) |&gt;
