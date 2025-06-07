@@ -2,7 +2,7 @@
 title: "In Connecticut schools spending is up, but students are still struggling"
 output:
   html_document:
-    theme: cosmo
+    theme: cerulean
 
 ---
 Sasha Allen | allensasha622@gmail.com | 443-386-7386 
@@ -35,10 +35,10 @@ The state created a method of looking at the overall performance of their school
 
 Each school has a point maximum based on the opportunities and level of school, and is given a score and an accountability index, or the percent of the total maximum points earned, to gauge what level a school or district is at. 
 
-<iframe title="Where are students struggling the most?" aria-label="Map" id="datawrapper-chart-big1o" src="https://datawrapper.dwcdn.net/big1o/8/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="603" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
+<iframe title="Where are students struggling the most?" aria-label="Map" id="datawrapper-chart-big1o" src="https://datawrapper.dwcdn.net/big1o/10/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="603" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
 </script>
 
-### Chronic absenteeism levels continue to rise as student test scores fall.
+## Funding levels continue to rise as student test scores fall.
 Connecticut has increased spending on education over the past decade. Despite this, students in the state are not performing well. In 2022, one in three students were at risk of not graduating high school according to a report released in October of 2023. 
 
 <div style="max-width: 700px; margin: 0 auto;"><iframe title="Education funding jumps, student performance plummets" aria-label="Interactive line chart" id="datawrapper-chart-LvnAi" src="https://datawrapper.dwcdn.net/LvnAi/2/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="441" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();</script></div>
@@ -46,11 +46,11 @@ Connecticut has increased spending on education over the past decade. Despite th
 <div style="max-width: 700px; margin: 0 auto;"><iframe title="[ Insert title here ]" aria-label="Interactive line chart" id="datawrapper-chart-oGIL8" src="https://datawrapper.dwcdn.net/oGIL8/2/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="323" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
 </script></div>
 
-### How does this compare nationally?
+## How does this compare nationally?
 
 Connecticut spends more on education than most states across the nation. But how much exactly are they spending, and what is the national average for per-pupil spending on education?
 
-<iframe title="Where are students struggling the most?" aria-label="Map" id="datawrapper-chart-big1o" src="https://datawrapper.dwcdn.net/big1o/8/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="603" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
+<iframe title="Per-pupil funding across the U.S. in FY 2023" aria-label="Map" id="datawrapper-chart-fqLP2" src="https://datawrapper.dwcdn.net/fqLP2/2/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="507" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
 </script>
 
 ## State actions 
@@ -324,7 +324,7 @@ ggplot(next_gen_state, aes(x = fall_of_year, y = accountability_index)) +
   theme_minimal()
 ```
 ```{r}
-#this is the per-pupil funding statewide in a rough graph. Despite a pretty steady increase in per-pupil funding, there is still a steady decrease in the accountability index (a high accountability index is good). I think this would be a great focus for the story, but i need to break down into a more micro view to see issues in specific counties.
+#this is the per-pupil funding statewide. Despite a pretty steady increase in per-pupil funding, there is still a steady decrease in the accountability index (a high accountability index is good). I think this would be a great focus for the story, but i need to break down into a more micro view to see issues in specific counties.
 ggplot(pp_statewide, aes(x = fall_of_year, y = ppe_numeric)) +
   geom_line(color = "blue", size = .5) +
   ylim(14000, 20000) +
@@ -393,22 +393,18 @@ pct_graphic |>
 
 
 #averaging the per pupil funding
-per_pupil_graphic <-per_pupil_parsed |>
-  filter(year == "21-22")
+#per_pupil_graphic <-per_pupil_parsed |>
+  #filter(year == "21-22")
 
-pp_graphic <- per_pupil_graphic|>
-  select(total, town, year)
+#pp_graphic <- per_pupil_graphic|>
+#  select(total, town, year)
 
-pp_graphic |>
-  group_by(town) |>
-  summarise(
-    total = mean(total, na.rm = TRUE),
-    .groups = "drop"
-  )
-
-
-
-
+#pp_graphic |>
+ # group_by(town) |>
+  #summarise(
+   # total = mean(total, na.rm = TRUE),
+    #.groups = "drop"
+ # )
 
 ```
 
